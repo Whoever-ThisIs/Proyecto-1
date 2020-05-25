@@ -70,7 +70,7 @@ DROP TABLE IF EXISTS `alumnos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `alumnos` (
-  `Ncuenta` tinyint(2) NOT NULL,
+  `Ncuenta` tinyint(9) NOT NULL,
   `Nombre` varchar(20) NOT NULL,
   `ApellidoPat` varchar(15) NOT NULL,
   `Grupo` tinyint(3) NOT NULL,
