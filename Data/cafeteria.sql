@@ -131,7 +131,7 @@ CREATE TABLE `colegios` (
   `id_colegio` tinyint(2) NOT NULL AUTO_INCREMENT,
   `Colegio` varchar(40) NOT NULL,
   PRIMARY KEY (`id_colegio`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,6 +140,7 @@ CREATE TABLE `colegios` (
 
 LOCK TABLES `colegios` WRITE;
 /*!40000 ALTER TABLE `colegios` DISABLE KEYS */;
+INSERT INTO `colegios` VALUES (1,'Física'),(2,'Informática'),(3,'Matemáticas'),(4,'Biología'),(5,'Educación Física'),(6,'Morfología, Fisiología y Salud'),(7,'Orientación Educativa'),(8,'Psicologia e Higiene Mental'),(9,'Química'),(10,'Ciencias Sociales'),(11,'Geografía'),(12,'Historia'),(13,'Alemán'),(14,'Artes Plásticas'),(15,'Danza'),(16,'Dibujo y Modelado'),(17,'Filosofía'),(18,'Francés'),(19,'Inglés'),(20,'Italiano'),(21,'Letras Clásicas'),(22,'Literatura'),(23,'Música'),(24,'Teatro'),(25,'Estudios Técnicos Especializados');
 /*!40000 ALTER TABLE `colegios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -474,4 +475,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-24 21:37:38
+-- Dump completed on 2020-05-24 23:47:40
