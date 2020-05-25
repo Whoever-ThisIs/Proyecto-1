@@ -71,7 +71,7 @@ DROP TABLE IF EXISTS `alumnos`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `alumnos` (
   `Ncuenta` tinyint(2) NOT NULL,
-  `Nombre` varchar(20) DEFAULT NULL,
+  `Nombre` varchar(20) NOT NULL,
   `ApellidoPat` varchar(15) NOT NULL,
   `Grupo` tinyint(3) NOT NULL,
   PRIMARY KEY (`Ncuenta`)
@@ -88,13 +88,13 @@ LOCK TABLES `alumnos` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `cancelacion`
+-- Table structure for table `cancelaciones`
 --
 
-DROP TABLE IF EXISTS `cancelacion`;
+DROP TABLE IF EXISTS `cancelaciones`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `cancelacion` (
+CREATE TABLE `cancelaciones` (
   `id_cancelacion` tinyint(9) NOT NULL,
   `id_pedido` tinyint(9) NOT NULL,
   `id_usuario` tinyint(9) NOT NULL,
@@ -112,12 +112,12 @@ CREATE TABLE `cancelacion` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cancelacion`
+-- Dumping data for table `cancelaciones`
 --
 
-LOCK TABLES `cancelacion` WRITE;
-/*!40000 ALTER TABLE `cancelacion` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cancelacion` ENABLE KEYS */;
+LOCK TABLES `cancelaciones` WRITE;
+/*!40000 ALTER TABLE `cancelaciones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cancelaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -144,32 +144,33 @@ LOCK TABLES `colegios` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `entrega`
+-- Table structure for table `entregas`
 --
 
-DROP TABLE IF EXISTS `entrega`;
+DROP TABLE IF EXISTS `entregas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `entrega` (
+CREATE TABLE `entregas` (
   `id_entrega` tinyint(9) NOT NULL,
   `id_pedido` tinyint(9) NOT NULL,
-  `id_menu` tinyint(3) NOT NULL,
+  `id_alimento` tinyint(4) NOT NULL,
   `cantidad` int(2) NOT NULL,
   PRIMARY KEY (`id_entrega`),
   KEY `id_pedido` (`id_pedido`),
-  KEY `id_menu` (`id_menu`),
-  CONSTRAINT `entrega_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`),
-  CONSTRAINT `entrega_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`)
+  KEY `alimentos` (`id_alimento`),
+  CONSTRAINT `alimentos` FOREIGN KEY (`id_alimento`) REFERENCES `alimentos` (`id_alimento`),
+  CONSTRAINT `entregas_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`),
+  CONSTRAINT `entregas_ibfk_2` FOREIGN KEY (`id_alimento`) REFERENCES `menu` (`id_menu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `entrega`
+-- Dumping data for table `entregas`
 --
 
-LOCK TABLES `entrega` WRITE;
-/*!40000 ALTER TABLE `entrega` DISABLE KEYS */;
-/*!40000 ALTER TABLE `entrega` ENABLE KEYS */;
+LOCK TABLES `entregas` WRITE;
+/*!40000 ALTER TABLE `entregas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `entregas` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -196,30 +197,81 @@ LOCK TABLES `estatus` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `funcionario`
+-- Table structure for table `funcionarios`
 --
 
-DROP TABLE IF EXISTS `funcionario`;
+DROP TABLE IF EXISTS `funcionarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `funcionario` (
+CREATE TABLE `funcionarios` (
   `id_colegio` tinyint(2) NOT NULL,
   `Nombre` varchar(20) NOT NULL,
   `ApellidoPat` varchar(15) NOT NULL,
   `RFC` varchar(13) NOT NULL,
   PRIMARY KEY (`RFC`),
   KEY `id_colegio` (`id_colegio`),
-  CONSTRAINT `funcionario_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegios` (`id_colegio`)
+  CONSTRAINT `funcionarios_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegios` (`id_colegio`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `funcionario`
+-- Dumping data for table `funcionarios`
 --
 
-LOCK TABLES `funcionario` WRITE;
-/*!40000 ALTER TABLE `funcionario` DISABLE KEYS */;
-/*!40000 ALTER TABLE `funcionario` ENABLE KEYS */;
+LOCK TABLES `funcionarios` WRITE;
+/*!40000 ALTER TABLE `funcionarios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `funcionarios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lista_negra`
+--
+
+DROP TABLE IF EXISTS `lista_negra`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lista_negra` (
+  `id_lista_negra` tinyint(9) NOT NULL,
+  `id_usuario` tinyint(9) NOT NULL,
+  `id_cancelacion` tinyint(9) NOT NULL,
+  `fecha_final` date NOT NULL,
+  PRIMARY KEY (`id_lista_negra`),
+  KEY `cancelacion` (`id_usuario`),
+  CONSTRAINT `cancelacion` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
+  CONSTRAINT `user` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lista_negra`
+--
+
+LOCK TABLES `lista_negra` WRITE;
+/*!40000 ALTER TABLE `lista_negra` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lista_negra` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `lugares`
+--
+
+DROP TABLE IF EXISTS `lugares`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `lugares` (
+  `id_lugar` tinyint(2) NOT NULL AUTO_INCREMENT,
+  `Lugar` varchar(20) NOT NULL,
+  PRIMARY KEY (`id_lugar`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lugares`
+--
+
+LOCK TABLES `lugares` WRITE;
+/*!40000 ALTER TABLE `lugares` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lugares` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -283,11 +335,15 @@ CREATE TABLE `pedidos` (
   `id_pedido` tinyint(9) NOT NULL,
   `id_usuario` tinyint(9) NOT NULL,
   `id_mensajero` tinyint(3) NOT NULL,
-  `Lugar` varchar(4) NOT NULL,
+  `Costo` float(6,2) NOT NULL,
+  `Fecha` date NOT NULL,
+  `Lugar` tinyint(2) NOT NULL,
   PRIMARY KEY (`id_pedido`),
   KEY `usuario` (`id_usuario`),
   KEY `mensajero` (`id_mensajero`),
+  KEY `Lugar` (`Lugar`),
   CONSTRAINT `mensajero` FOREIGN KEY (`id_mensajero`) REFERENCES `mensajeros` (`id_mensajero`),
+  CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`Lugar`) REFERENCES `lugares` (`id_lugar`),
   CONSTRAINT `usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -352,13 +408,13 @@ LOCK TABLES `razones` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `trabajador`
+-- Table structure for table `trabajadores`
 --
 
-DROP TABLE IF EXISTS `trabajador`;
+DROP TABLE IF EXISTS `trabajadores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `trabajador` (
+CREATE TABLE `trabajadores` (
   `NTrabajador` varchar(10) NOT NULL,
   `Nombre` varchar(20) NOT NULL,
   `ApellidoPat` varchar(15) NOT NULL,
@@ -367,12 +423,12 @@ CREATE TABLE `trabajador` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `trabajador`
+-- Dumping data for table `trabajadores`
 --
 
-LOCK TABLES `trabajador` WRITE;
-/*!40000 ALTER TABLE `trabajador` DISABLE KEYS */;
-/*!40000 ALTER TABLE `trabajador` ENABLE KEYS */;
+LOCK TABLES `trabajadores` WRITE;
+/*!40000 ALTER TABLE `trabajadores` DISABLE KEYS */;
+/*!40000 ALTER TABLE `trabajadores` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -393,9 +449,9 @@ CREATE TABLE `usuarios` (
   KEY `profesor` (`id_profesor`),
   KEY `funcionario` (`id_funcionario`),
   KEY `trabajador` (`id_trabajador`),
-  CONSTRAINT `funcionario` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionario` (`RFC`),
+  CONSTRAINT `funcionario` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionarios` (`RFC`),
   CONSTRAINT `profesor` FOREIGN KEY (`id_profesor`) REFERENCES `profesores` (`RFC`),
-  CONSTRAINT `trabajador` FOREIGN KEY (`id_trabajador`) REFERENCES `trabajador` (`NTrabajador`),
+  CONSTRAINT `trabajador` FOREIGN KEY (`id_trabajador`) REFERENCES `trabajadores` (`NTrabajador`),
   CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`Ncuenta`) REFERENCES `alumnos` (`Ncuenta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -418,4 +474,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-24  0:09:30
+-- Dump completed on 2020-05-24 21:37:38
