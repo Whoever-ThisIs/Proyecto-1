@@ -1,13 +1,13 @@
--- MariaDB dump 10.17  Distrib 10.4.11-MariaDB, for Win64 (AMD64)
+-- MySQL dump 10.13  Distrib 5.7.26, for osx10.10 (x86_64)
 --
 -- Host: localhost    Database: cafeteria
 -- ------------------------------------------------------
--- Server version	10.4.11-MariaDB
+-- Server version	5.7.26
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -25,6 +25,7 @@ DROP TABLE IF EXISTS `administradores`;
 CREATE TABLE `administradores` (
   `id_admin` tinyint(3) NOT NULL,
   `Password` text NOT NULL,
+  `nombre` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_admin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -100,7 +101,7 @@ CREATE TABLE `cancelaciones` (
   `id_usuario` tinyint(9) NOT NULL,
   `id_razon` tinyint(3) NOT NULL,
   `comentario` varchar(10) NOT NULL,
-  `fecha` varchar(10) NOT NULL,
+  `fecha` date NOT NULL,
   PRIMARY KEY (`id_cancelacion`),
   KEY `pedido` (`id_pedido`),
   KEY `usuarios` (`id_usuario`),
@@ -237,7 +238,9 @@ CREATE TABLE `lista_negra` (
   `fecha_final` date NOT NULL,
   PRIMARY KEY (`id_lista_negra`),
   KEY `cancelacion` (`id_usuario`),
+  KEY `id_cancelacion` (`id_cancelacion`),
   CONSTRAINT `cancelacion` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
+  CONSTRAINT `lista_negra_ibfk_1` FOREIGN KEY (`id_cancelacion`) REFERENCES `cancelaciones` (`id_cancelacion`),
   CONSTRAINT `user` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -308,7 +311,7 @@ DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu` (
   `id_menu` tinyint(3) NOT NULL,
   `id_alimento` tinyint(2) NOT NULL,
-  `cantidat` tinyint(2) NOT NULL,
+  `cantidad` tinyint(2) NOT NULL,
   PRIMARY KEY (`id_menu`),
   KEY `alimento` (`id_alimento`),
   CONSTRAINT `alimento` FOREIGN KEY (`id_alimento`) REFERENCES `alimentos` (`id_alimento`)
@@ -338,12 +341,15 @@ CREATE TABLE `pedidos` (
   `Costo` float(6,2) NOT NULL,
   `Fecha` date NOT NULL,
   `Lugar` tinyint(2) NOT NULL,
+  `id_estatus` tinyint(2) NOT NULL,
   PRIMARY KEY (`id_pedido`),
   KEY `usuario` (`id_usuario`),
   KEY `mensajero` (`id_mensajero`),
   KEY `Lugar` (`Lugar`),
+  KEY `id_estatus` (`id_estatus`),
   CONSTRAINT `mensajero` FOREIGN KEY (`id_mensajero`) REFERENCES `mensajeros` (`id_mensajero`),
   CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`Lugar`) REFERENCES `lugares` (`id_lugar`),
+  CONSTRAINT `pedidos_ibfk_2` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
   CONSTRAINT `usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -444,6 +450,7 @@ CREATE TABLE `usuarios` (
   `id_profesor` varchar(13) DEFAULT NULL,
   `id_funcionario` varchar(13) DEFAULT NULL,
   `id_trabajador` varchar(10) DEFAULT NULL,
+  `password` text,
   PRIMARY KEY (`id_usuario`),
   KEY `Ncuenta` (`Ncuenta`),
   KEY `profesor` (`id_profesor`),
@@ -474,4 +481,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-24 21:37:38
+-- Dump completed on 2020-05-24 23:42:47
