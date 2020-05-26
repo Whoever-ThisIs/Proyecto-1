@@ -1,7 +1,10 @@
 <?php
+  session_name("cafeteria");
+  session_id("7181414");
   session_start();
-  if (isset($_SESSION['usuario']))
-    header('location: ./Menu.php');
+  if (isset($_SESSION['usuario'])){
+    header('location: menu.php');
+  }
   else
   {
     echo "<!DOCTYPE html>
@@ -14,9 +17,9 @@
               </head>
               <body>
                 <fieldset>
-                  <legend> <h1>Bienvenid@. Que desea hacer?</h1> </legend>
-                  <h3> <a href='Inicio de sesion.html'> Iniciar sesion </a> </h3>
-                  <h3> <a href='Tipo de usuario.html'> Registrarme  </a> </h3>
+                  <legend> <h1>Bienvenid@. ¿Qué desea hacer?</h1> </legend>
+                  <h3> <a href='../Templates/InicioDeSesión.html'> Iniciar sesion </a> </h3>
+                  <h3> <a href='../Templates/TipoDeUsuario.html'> Registrarme  </a> </h3>
                 </fieldset>
               </body>
             </html>";
