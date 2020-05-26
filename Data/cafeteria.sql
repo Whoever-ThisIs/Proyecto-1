@@ -1,13 +1,13 @@
--- MySQL dump 10.13  Distrib 5.7.26, for osx10.10 (x86_64)
+-- MariaDB dump 10.17  Distrib 10.4.11-MariaDB, for Win64 (AMD64)
 --
--- Host: localhost    Database: cafeteria
+-- Host: localhost    Database: proyecto
 -- ------------------------------------------------------
--- Server version	5.7.26
+-- Server version	10.4.11-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -97,11 +97,11 @@ DROP TABLE IF EXISTS `alumnos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `alumnos` (
-  `Ncuenta` tinyint(9) NOT NULL,
+  `NCuenta` int(9) NOT NULL,
   `Nombre` varchar(20) NOT NULL,
   `ApellidoPat` varchar(15) NOT NULL,
-  `Grupo` tinyint(3) NOT NULL,
-  PRIMARY KEY (`Ncuenta`)
+  `Grupo` int(3) DEFAULT NULL,
+  PRIMARY KEY (`NCuenta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -627,7 +627,7 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuarios` (
   `id_usuario` varchar(13) NOT NULL,
-  `password` text,
+  `password` text DEFAULT NULL,
   PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -650,4 +650,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-25 15:23:40
+-- Dump completed on 2020-05-25 19:55:20
