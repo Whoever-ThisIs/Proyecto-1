@@ -3,7 +3,6 @@
   $consulta = "SELECT * FROM grupos";
   $respuesta = mysqli_query($conexion,$consulta);
   $group = mysqli_fetch_array($respuesta,MYSQLI_ASSOC);
-  echo "<br>";
   echo "<!DOCTYPE html>
           <html lang='es' dir='ltr'>
             <head>
