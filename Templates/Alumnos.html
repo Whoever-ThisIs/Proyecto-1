@@ -5,15 +5,23 @@
     <title>ALUMNOS</title>
   </head>
   <body>
-    Nombre: <input type="text" name="nombre" value="">
-    <br>
-    No. Cuenta: <input type="text" name="no.cuenta" value="" max="9" min="9">
-    <br>
-    Grupo: <input type="text" name="grupo" value="">
-    <br>
-    Contraseña: <input type="password" name="cont" value="">
-    <br>
-    <input type="submit" name="" value="Enviar">
-
+    <div align="center">
+      <form action="index.html" method="post">
+        <fieldset>
+          <legend><h1>Registro de usuario (Alumno)</h1></legend>
+          <input type="text" name="nombre" placeholder="Nombre" required>
+          <br>
+          <input type="text" name="noCuenta" value=""
+          placeholder="Número de cuenta"
+          title="El número de cuenta debe de tener exactamente 9 dígitos numéricos" pattern='\d{9}' required>
+          <br>
+          <input type="text" name="grupo" placeholder="Grupo" title="Debe ser un grupo valido de la preparatoria de 3 dígitos" pattern="[4-6][0156]((?<=[05])[0-9]|(?<=[16])[0-8])" required>
+          <br>
+          <input type="password" name="cont" placeholder="Contraseña" required>
+          <br>
+          <input type="submit" name="" value="Enviar">
+        </fieldset>
+      </form>
+    </div>
   </body>
 </html>
