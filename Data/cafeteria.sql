@@ -23,9 +23,9 @@ DROP TABLE IF EXISTS `administradores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `administradores` (
-  `id_admin` tinyint(3) NOT NULL,
+  `id_admin` tinyint(3) NOT NULL AUTO_INCREMENT,
   `Password` text NOT NULL,
-  `nombre` varchar(20) DEFAULT NULL,
+  `nombre` varchar(20) NOT NULL,
   PRIMARY KEY (`id_admin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -47,11 +47,11 @@ DROP TABLE IF EXISTS `alimentos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `alimentos` (
-  `id_alimento` tinyint(4) NOT NULL,
+  `id_alimento` tinyint(4) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(15) NOT NULL,
   `precio` float(5,2) NOT NULL,
   PRIMARY KEY (`id_alimento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,6 +60,7 @@ CREATE TABLE `alimentos` (
 
 LOCK TABLES `alimentos` WRITE;
 /*!40000 ALTER TABLE `alimentos` DISABLE KEYS */;
+INSERT INTO `alimentos` VALUES (1,'Agua sabor vaso',13.50),(2,'Yakult',12.00),(3,'Galletas Oreo',12.00),(4,'Chimichangas',50.00);
 /*!40000 ALTER TABLE `alimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -71,11 +72,13 @@ DROP TABLE IF EXISTS `alumnos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `alumnos` (
-  `Ncuenta` tinyint(9) NOT NULL,
+  `Ncuenta` int(32) NOT NULL,
   `Nombre` varchar(20) NOT NULL,
   `ApellidoPat` varchar(15) NOT NULL,
-  `Grupo` tinyint(3) NOT NULL,
-  PRIMARY KEY (`Ncuenta`)
+  `Grupo` tinyint(4) NOT NULL,
+  PRIMARY KEY (`Ncuenta`),
+  KEY `Grupo` (`Grupo`),
+  CONSTRAINT `alumnos_ibfk_1` FOREIGN KEY (`Grupo`) REFERENCES `Grupos` (`id_grupo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -96,19 +99,19 @@ DROP TABLE IF EXISTS `cancelaciones`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cancelaciones` (
-  `id_cancelacion` tinyint(9) NOT NULL,
-  `id_pedido` tinyint(9) NOT NULL,
-  `id_usuario` tinyint(9) NOT NULL,
+  `id_cancelacion` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pedido` int(11) NOT NULL,
+  `id_usuario` varchar(13) NOT NULL,
   `id_razon` tinyint(3) NOT NULL,
-  `comentario` varchar(10) NOT NULL,
+  `comentario` text NOT NULL,
   `fecha` date NOT NULL,
   PRIMARY KEY (`id_cancelacion`),
   KEY `pedido` (`id_pedido`),
   KEY `usuarios` (`id_usuario`),
-  KEY `razon` (`id_razon`),
-  CONSTRAINT `pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`),
-  CONSTRAINT `razon` FOREIGN KEY (`id_razon`) REFERENCES `razones` (`id_razon`),
-  CONSTRAINT `usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+  KEY `id_razon` (`id_razon`),
+  CONSTRAINT `cancelaciones_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
+  CONSTRAINT `id_razon` FOREIGN KEY (`id_razon`) REFERENCES `razones` (`id_razon`),
+  CONSTRAINT `pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -132,7 +135,7 @@ CREATE TABLE `colegios` (
   `id_colegio` tinyint(2) NOT NULL AUTO_INCREMENT,
   `Colegio` varchar(40) NOT NULL,
   PRIMARY KEY (`id_colegio`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,6 +144,7 @@ CREATE TABLE `colegios` (
 
 LOCK TABLES `colegios` WRITE;
 /*!40000 ALTER TABLE `colegios` DISABLE KEYS */;
+INSERT INTO `colegios` VALUES (1,'Física'),(2,'Informática'),(3,'Matemáticas'),(4,'Biología'),(5,'Educación Física'),(6,'Morfología, Fisiología y Salud'),(7,'Orientación Educativa'),(8,'Psicologia e Higiene Mental'),(9,'Química'),(10,'Ciencias Sociales'),(11,'Geografía'),(12,'Historia'),(13,'Alemán'),(14,'Artes Plásticas'),(15,'Danza'),(16,'Dibujo y Modelado'),(17,'Filosofía'),(18,'Francés'),(19,'Inglés'),(20,'Italiano'),(21,'Letras Clásicas'),(22,'Literatura'),(23,'Música'),(24,'Teatro'),(25,'Estudios Técnicos Especializados');
 /*!40000 ALTER TABLE `colegios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,16 +156,15 @@ DROP TABLE IF EXISTS `entregas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `entregas` (
-  `id_entrega` tinyint(9) NOT NULL,
-  `id_pedido` tinyint(9) NOT NULL,
-  `id_alimento` tinyint(4) NOT NULL,
-  `cantidad` int(2) NOT NULL,
+  `id_entrega` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pedido` int(11) NOT NULL,
+  `id_menu` smallint(7) DEFAULT NULL,
+  `cantidad` tinyint(7) NOT NULL,
   PRIMARY KEY (`id_entrega`),
   KEY `id_pedido` (`id_pedido`),
-  KEY `alimentos` (`id_alimento`),
-  CONSTRAINT `alimentos` FOREIGN KEY (`id_alimento`) REFERENCES `alimentos` (`id_alimento`),
+  KEY `id_menu` (`id_menu`),
   CONSTRAINT `entregas_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`),
-  CONSTRAINT `entregas_ibfk_2` FOREIGN KEY (`id_alimento`) REFERENCES `menu` (`id_menu`)
+  CONSTRAINT `entregas_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -182,7 +185,7 @@ DROP TABLE IF EXISTS `estatus`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `estatus` (
-  `id_estatus` tinyint(2) NOT NULL,
+  `id_estatus` tinyint(2) NOT NULL AUTO_INCREMENT,
   `estatus` varchar(20) NOT NULL,
   PRIMARY KEY (`id_estatus`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -225,6 +228,29 @@ LOCK TABLES `funcionarios` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `grupos`
+--
+
+DROP TABLE IF EXISTS `grupos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `grupos` (
+  `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT,
+  `grupo` smallint(6) NOT NULL,
+  PRIMARY KEY (`id_grupo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `grupos`
+--
+
+LOCK TABLES `grupos` WRITE;
+/*!40000 ALTER TABLE `grupos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `grupos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `lista_negra`
 --
 
@@ -232,16 +258,15 @@ DROP TABLE IF EXISTS `lista_negra`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lista_negra` (
-  `id_lista_negra` tinyint(9) NOT NULL,
-  `id_usuario` tinyint(9) NOT NULL,
-  `id_cancelacion` tinyint(9) NOT NULL,
+  `id_lista_negra` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` varchar(13) NOT NULL,
+  `id_cancelacion` int(11) NOT NULL,
   `fecha_final` date NOT NULL,
   PRIMARY KEY (`id_lista_negra`),
   KEY `cancelacion` (`id_usuario`),
   KEY `id_cancelacion` (`id_cancelacion`),
-  CONSTRAINT `cancelacion` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
   CONSTRAINT `lista_negra_ibfk_1` FOREIGN KEY (`id_cancelacion`) REFERENCES `cancelaciones` (`id_cancelacion`),
-  CONSTRAINT `user` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+  CONSTRAINT `lista_negra_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -262,7 +287,7 @@ DROP TABLE IF EXISTS `lugares`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lugares` (
-  `id_lugar` tinyint(2) NOT NULL AUTO_INCREMENT,
+  `id_lugar` smallint(7) NOT NULL,
   `Lugar` varchar(20) NOT NULL,
   PRIMARY KEY (`id_lugar`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -285,7 +310,7 @@ DROP TABLE IF EXISTS `mensajeros`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mensajeros` (
-  `id_mensajero` tinyint(3) NOT NULL,
+  `id_mensajero` tinyint(3) NOT NULL AUTO_INCREMENT,
   `Nombre` varchar(20) NOT NULL,
   `Password` text NOT NULL,
   PRIMARY KEY (`id_mensajero`)
@@ -309,13 +334,13 @@ DROP TABLE IF EXISTS `menu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `menu` (
-  `id_menu` tinyint(3) NOT NULL,
+  `id_menu` smallint(7) NOT NULL AUTO_INCREMENT,
   `id_alimento` tinyint(2) NOT NULL,
-  `cantidad` tinyint(2) NOT NULL,
+  `cantidad` int(11) NOT NULL,
   PRIMARY KEY (`id_menu`),
   KEY `alimento` (`id_alimento`),
   CONSTRAINT `alimento` FOREIGN KEY (`id_alimento`) REFERENCES `alimentos` (`id_alimento`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -324,6 +349,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` VALUES (1,1,20),(2,2,0),(3,3,10),(4,4,5);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -335,22 +361,22 @@ DROP TABLE IF EXISTS `pedidos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pedidos` (
-  `id_pedido` tinyint(9) NOT NULL,
-  `id_usuario` tinyint(9) NOT NULL,
+  `id_pedido` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` varchar(13) NOT NULL,
   `id_mensajero` tinyint(3) NOT NULL,
   `Costo` float(6,2) NOT NULL,
   `Fecha` date NOT NULL,
-  `Lugar` tinyint(2) NOT NULL,
+  `lugar` smallint(7) DEFAULT NULL,
   `id_estatus` tinyint(2) NOT NULL,
   PRIMARY KEY (`id_pedido`),
   KEY `usuario` (`id_usuario`),
   KEY `mensajero` (`id_mensajero`),
-  KEY `Lugar` (`Lugar`),
+  KEY `Lugar` (`lugar`),
   KEY `id_estatus` (`id_estatus`),
   CONSTRAINT `mensajero` FOREIGN KEY (`id_mensajero`) REFERENCES `mensajeros` (`id_mensajero`),
-  CONSTRAINT `pedidos_ibfk_1` FOREIGN KEY (`Lugar`) REFERENCES `lugares` (`id_lugar`),
   CONSTRAINT `pedidos_ibfk_2` FOREIGN KEY (`id_estatus`) REFERENCES `estatus` (`id_estatus`),
-  CONSTRAINT `usuario` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
+  CONSTRAINT `pedidos_ibfk_3` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
+  CONSTRAINT `pedidos_ibfk_4` FOREIGN KEY (`lugar`) REFERENCES `lugares` (`id_lugar`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -398,7 +424,7 @@ DROP TABLE IF EXISTS `razones`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `razones` (
-  `id_razon` tinyint(3) NOT NULL,
+  `id_razon` tinyint(3) NOT NULL AUTO_INCREMENT,
   `razon` text NOT NULL,
   PRIMARY KEY (`id_razon`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -445,21 +471,10 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuarios` (
-  `id_usuario` tinyint(9) NOT NULL,
-  `Ncuenta` tinyint(9) DEFAULT NULL,
-  `id_profesor` varchar(13) DEFAULT NULL,
-  `id_funcionario` varchar(13) DEFAULT NULL,
-  `id_trabajador` varchar(10) DEFAULT NULL,
-  `password` text,
-  PRIMARY KEY (`id_usuario`),
-  KEY `Ncuenta` (`Ncuenta`),
-  KEY `profesor` (`id_profesor`),
-  KEY `funcionario` (`id_funcionario`),
-  KEY `trabajador` (`id_trabajador`),
-  CONSTRAINT `funcionario` FOREIGN KEY (`id_funcionario`) REFERENCES `funcionarios` (`RFC`),
-  CONSTRAINT `profesor` FOREIGN KEY (`id_profesor`) REFERENCES `profesores` (`RFC`),
-  CONSTRAINT `trabajador` FOREIGN KEY (`id_trabajador`) REFERENCES `trabajadores` (`NTrabajador`),
-  CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`Ncuenta`) REFERENCES `alumnos` (`Ncuenta`)
+  `id_usuario` varchar(13) NOT NULL,
+  `password` text NOT NULL,
+  `condimento` text NOT NULL,
+  PRIMARY KEY (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -481,4 +496,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-24 23:42:47
+-- Dump completed on 2020-05-26 12:30:20
