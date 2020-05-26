@@ -7,13 +7,15 @@
   <body>
     <fieldset>
       <legend>Inicio de Sesión</legend>
-      Usuario: <input type="text" name="Usuario" value="">
-      <br>
-      <br>
-      Contraseña <input type="password" name="Contraseña" value=""  placeholder="Mínimo 8 caracteres">
-      <br>
-      <br>
-      <input type="submit" name="" value="Enviar">
+      <form action="validacion_usr.php" method="post">
+        Usuario: <input type="text" name="Usuario" value="">
+        <br>
+        <br>
+        Contraseña: <input type="password" name="password" value=""  placeholder="Mínimo 8 caracteres">
+        <br>
+        <br>
+        <input type="submit" name="" value="Enviar">
+      </form>
     </fieldset>
 
 
