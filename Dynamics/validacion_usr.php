@@ -26,7 +26,7 @@
       $consulta_usuario = mysqli_query($conexion, $SQL_usuario);
       $usuario = mysqli_fetch_array($consulta_usuario);
       if (isset($usuario)) {
-        $SQL = "SELECT id_usuario from usuarios where password='$password'";
+        $SQL = "SELECT id_usuario from usuarios where password='$password' and id_usuario='$usr'";
         $respuesta = mysqli_query($conexion, $SQL);
         $fila = mysqli_fetch_array($respuesta);
         if (isset($fila)) {
