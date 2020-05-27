@@ -12,8 +12,8 @@
     or die("No se ha podido acceder a la base de datos.");
   }
 
-  function connectDB($base2){
-    $con = mysqli_connect(DBHOST, DBUSER, PASSWORD, $base);
+  function connectDB2($base){
+    $con = mysqli_connect(DBHOST, DBUSER, PASSDB, $base);
     if (!$con) {
       echo "No se ha podido acceder a la base de datos.";
     }
