@@ -58,12 +58,16 @@
   function pepper($text){
     $abc="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     $lon=strlen($abc);
-    $pepper = $abc[rand(0, $lon - 1) ];
-    $text .= $pepper;
+    $pepper='';
+    for ($a=0; $a < 2; $a++) {
+      $pepper .= $abc[rand(0, $lon - 1)];
+    }
+
+      $text .= $pepper;
     return $text;
   }
   //Contraseña al registrarse
-  $contra="passwordty";
+  $contra="passwordtx";
   $contra1=atbash($contra);
   $salt=salt();
   $contra2=pepper($contra1);
@@ -78,10 +82,12 @@
   $len=strlen($abc);
   $true=0;
   for ($j=0; $j < $len; $j++) {
-    $icontra3=$icontra1.$abc[$j].$salt;
-    $ipassword=openssl_digest($icontra3, HASH);
-    if ($ipassword==$password2) {
-      $true++;
+    for ($k=0; $k < $len; $k++) {
+      $icontra3=$icontra1.$abc[$j].$abc[$k].$salt;
+      $ipassword=openssl_digest($icontra3, HASH);
+      if ($ipassword==$password2) {
+        $true++;
+      }
     }
   }
   if ($true==1) {
