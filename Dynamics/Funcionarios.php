@@ -7,7 +7,7 @@
           <html lang='es' dir='ltr'>
             <head>
               <meta charset='utf-8'>
-              <title>REGISTRO DE PROFESOR</title>
+              <title>REGISTRO DE FUNCIONARIO</title>
             </head>
             <body>
               <form method='POST' action='#.php'>
@@ -16,7 +16,7 @@
                   Nombre:
                   <br>
                   <input type='text' name='nombre' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required placeholder='&#128100; Nombre'>
-                  <input type='hidden' name='tipo_usuario' value='Profesor'>
+                  <input type='hidden' name='tipo_usuario' value='funcionario'>
                   <br>
                   Apellido paterno:
                   <br>
