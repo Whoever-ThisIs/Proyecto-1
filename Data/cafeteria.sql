@@ -236,7 +236,7 @@ DROP TABLE IF EXISTS `grupos`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `grupos` (
   `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT,
-  `grupo` smallint(6) NOT NULL,
+  `grupo` smallint(10) NOT NULL,
   PRIMARY KEY (`id_grupo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -247,6 +247,7 @@ CREATE TABLE `grupos` (
 
 LOCK TABLES `grupos` WRITE;
 /*!40000 ALTER TABLE `grupos` DISABLE KEYS */;
+INSERT INTO `grupos` VALUES (1,401),(2,402),(3,403),(4,404),(5,405),(6,406),(7,407),(8,408),(9,409),(10,410),(11,411),(12,412),(13,413),(14,414),(15,415),(16,416),(17,417),(18,451),(19,452),(20,453),(21,454),(22,455),(23,456),(24,457),(25,458),(26,459),(27,460),(28,461),(29,462),(30,463),(31,464),(32,465),(33,466),(34,501),(35,502),(36,503),(37,504),(38,505),(39,506),(40,507),(41,508),(42,509),(43,510),(44,511),(45,512),(46,513),(47,514),(48,515),(49,516),(50,517),(51,518),(52,551),(53,552),(54,553),(55,554),(56,555),(57,556),(58,557),(59,558),(60,559),(61,560),(62,561),(63,562),(64,563),(65,564),(66,601),(67,602),(68,603),(69,604),(70,605),(71,606),(72,607),(73,608),(74,609),(75,610),(76,611),(77,612),(78,613),(79,614),(80,615),(81,616),(82,617),(83,618),(84,619),(85,651),(86,652),(87,653),(88,654),(89,655),(90,656),(91,657),(92,658),(93,659),(94,660),(95,661),(96,662),(97,663),(98,664);
 /*!40000 ALTER TABLE `grupos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -287,10 +288,10 @@ DROP TABLE IF EXISTS `lugares`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lugares` (
-  `id_lugar` smallint(7) NOT NULL,
-  `Lugar` varchar(20) NOT NULL,
+  `id_lugar` smallint(7) NOT NULL AUTO_INCREMENT,
+  `Lugar` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id_lugar`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -299,6 +300,7 @@ CREATE TABLE `lugares` (
 
 LOCK TABLES `lugares` WRITE;
 /*!40000 ALTER TABLE `lugares` DISABLE KEYS */;
+INSERT INTO `lugares` VALUES (1,'Sala de maestros'),(2,'A-17'),(3,'Pulpo'),(4,'Dirección'),(5,'Laboratorio de ciencias'),(6,'Elevador arriba'),(7,'Patio de sextos'),(8,'Patio de cuartos'),(9,'Patio de quintos'),(10,'Pasillo salones B'),(11,'Pasillo salones C'),(12,'Pasillo salones D'),(13,'Pimpos'),(14,'Abajo de biblioteca'),(15,'Canchas'),(16,'Camerinos'),(17,'Auditorio'),(18,'Pasillo salones H'),(19,'Gimnasio'),(20,'Laboratorios'),(21,'Mediateca');
 /*!40000 ALTER TABLE `lugares` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -497,4 +499,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-26 16:07:32
+-- Dump completed on 2020-05-27  0:20:55

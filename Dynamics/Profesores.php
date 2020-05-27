@@ -10,7 +10,7 @@
               <title>REGISTRO DE PROFESOR</title>
             </head>
             <body>
-              <form method='POST' action='#.php'>
+              <form method='POST' action='registro.php'>
                 <fieldset>
                   <legend> <h1> Registrar usuario </h1> </legend>
                   Nombre:
