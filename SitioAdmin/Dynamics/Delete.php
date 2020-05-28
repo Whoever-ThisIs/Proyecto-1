@@ -10,5 +10,5 @@
   }
   else
     setcookie("msg","Error al borrar alimento.",time() + 60*10);
-  header('location: ./Eliminar-producto.php');
+  header('location: ./Gestion-de-alimentos.php');
  ?>

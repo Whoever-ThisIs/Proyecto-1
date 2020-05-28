@@ -14,7 +14,7 @@
                   <div class='contenedor'>
                     <fieldset>
                       <legend> <h1> Que vamos a hacer hoy? </h1> </legend>
-                        <h3><a href='#'> Gestionar Productos </a> </h3>
+                        <h3><a href='Gestion-de-alimentos.php'> Gestionar Productos </a> </h3>
                         <br>
                         <h3><a href='#'> Gestionar Usuarios </a> </h3>
                     </fieldset>

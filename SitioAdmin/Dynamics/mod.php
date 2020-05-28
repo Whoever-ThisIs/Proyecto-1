@@ -22,9 +22,9 @@
       if ($consulta != "") {
         echo "          <p> Nombre: </p>
                         <input type='hidden' value='". $id ."' name='id'>
-                        <input type='text' value='" . $consulta['nombre'] . "' name='nombre' required>
+                        <input type='text' value='" . $consulta['nombre'] . "' name='nombre' pattern='[A-ZÁÉÍÓÚÜÑ]{1}[a-záéíóüúñ\s]+' title='Solo puedes introducir caracteres del alfabeto latino' required>
                         <p> Precio: </p>
-                        $<input type='number' value='" . $consulta['precio'] . "' name='precio' required>
+                        $<input type='number' value='" . $consulta['precio'] . "' name='precio'  title='Solo puedes introducir numeros :)' required>
                         <br>
                         <input type='submit' value='Cambiar'>";
       }

@@ -8,7 +8,7 @@
             <html lang='es' dir='ltr'>
               <head>
                 <meta charset='utf-8'>
-                <title> Que vamos a hacer hoy? </title>
+                <title> Añadir producto </title>
               </head>
               <body>
                 <form class='' action='add.php' method='post'>

@@ -10,11 +10,12 @@
       $consulta2 = "UPDATE alimentos SET precio = \"$precio\" WHERE id_alimento = $id";
       $respuesta = mysqli_query($conexion,$consulta);
       $respuesta = mysqli_query($conexion,$consulta2);
-      echo "Datos actualizados con exito";
+      setcookie("msg","Alimento modificado correctamente.",time() + 60*1);
+      header('location: Gestion-de-alimentos.php');
     }
-    else {
-      echo "El precio debe ser mayor a 1. ";
+    else
+    {
+      setcookie("msg","El precio debe ser mayor a uno.",time() + 60*1);
     }
-    echo "<br><a href='Modificar-producto.php'> Editar otro producto </a>";
   }
  ?>

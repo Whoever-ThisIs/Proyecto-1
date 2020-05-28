@@ -19,18 +19,19 @@
         $consulta = mysqli_fetch_array($IDK,MYSQLI_NUM);
         $insert = "INSERT INTO menu (id_alimento, cantidad) VALUES (\"$consulta[0]\" , \"$cantidad\" ) ";
         mysqli_query($conexion,$insert);
-        echo "El producto ha sido agregado. :)";
+        setcookie("msg","Alimento añadido correctamente.",time() + 60*1);
       }
       else
       {
         $update = "UPDATE menu SET cantidad = $cantidad WHERE id_alimento = $consulta[0]";
         mysqli_query($conexion,$update);
-        echo "Este producto ya existe y no se puede vover a agregar, es por eso que solo se ha actualizado la cantidad.";
+        setcookie("msg","Error al añadir el producto, ya existe un producto con ese nombre por lo que solo se ha modificado la cantidad disponible.",time() + 60*1);
       }
 
     }
     else {
-      echo "Error al añadir el producto, el precio y la cantidad deben ser mayor a uno";
+      setcookie("msg","Error al añadir producto, el precio y la cantidad deben ser mayor a uno",time() + 60*1);
     }
+    header('location: ./Gestion-de-alimentos.php');
   }
 ?>
