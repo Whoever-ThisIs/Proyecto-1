@@ -1,6 +1,7 @@
 <?php
-  session_id();
-  session_start();
+  // session_name("cafeteria");
+  // session_id("319014215");
+  // session_start();
   //if (isset($_SESSION['IDK']))
   //{
     echo "<!DOCTYPE html>

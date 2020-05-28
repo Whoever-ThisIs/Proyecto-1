@@ -1,5 +1,6 @@
 <?php
-  // session_id();
+  // session_name("cafeteria");
+  // session_id("319014215");
   // session_start();
   // if (isset($_SESSION['']))
   // {
@@ -17,7 +18,7 @@
                 <div class='fieldset'>
                   <fieldset>
                     <legend> <h1> Eliminar Alimento </h1> </legend>";
-    if (isset($_COOKIE['msg'])) 
+    if (isset($_COOKIE['msg']))
       echo $_COOKIE['msg'];
     echo            "<table>
                       <tr>
