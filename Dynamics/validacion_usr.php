@@ -1,6 +1,9 @@
 <?php
   //Funciones para la conexión de la base de datos
   include("bd.php");
+  include("des-cifrado.php");
+
+
   $conexion = connectDB2("cafeteria");
   if(!$conexion) {
     echo mysqli_connect_error()."<br>";
@@ -19,23 +22,30 @@
         <body>
           <table></table>
     ";
-    $usr = (isset($_POST['Usuario']) && $_POST['Usuario'] != "") ? $_POST['Usuario'] : false ;
     $password = (isset($_POST['password']) && $_POST['password'] != "") ? $_POST['password'] : false ;
+    $usr = (isset($_POST['id']) && $_POST['id'] != "") ? $_POST['id'] : false ;
     if ($usr!==false&&$password!==false) {
       $SQL_usuario = "SELECT id_usuario FROM usuarios WHERE id_usuario='$usr'";
       $consulta_usuario = mysqli_query($conexion, $SQL_usuario);
       $usuario = mysqli_fetch_array($consulta_usuario);
       if (isset($usuario)) {
-        $SQL = "SELECT id_usuario from usuarios where password='$password'";
-        $respuesta = mysqli_query($conexion, $SQL);
-        $fila = mysqli_fetch_array($respuesta);
-        if (isset($fila)) {
+        $true=consultapass($conexion,$usr,$password);
+        if ($true==1) {
           session_name("cafeteria");
           session_id("7181414");
           session_start();
           $_SESSION['usuario']=$usr;
-          header('Location: menu.php');
+          if (preg_match('/^([TPF]|A(?!D))/',$usr)) {
+            header('Location: menu.php');
+          }
+          elseif (preg_match('/^AD/',$usr)) {
+            header('Location: ../SitioAdmin/Dynamics/Panel-Pontrol.php');
+          }
+          elseif (preg_match('/^M/',$usr)) {
+            header('Location: #.php');
+          }
         }
+
         else
         {
           echo "Ningún usuario coincide con esa contraseña <br>

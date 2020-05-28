@@ -10,13 +10,13 @@
               <title>REGISTRO DE FUNCIONARIO</title>
             </head>
             <body>
-              <form method='POST' action='#.php'>
+              <form method='POST' action='registro.php'>
                 <fieldset>
                   <legend> <h1> Registrar usuario </h1> </legend>
                   Nombre:
                   <br>
                   <input type='text' name='nombre' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required placeholder='&#128100; Nombre'>
-                  <input type='hidden' name='tipo_usuario' value='funcionario'>
+                  <input type='hidden' name='tipo_usuario' value='Funcionario'>
                   <br>
                   Apellido paterno:
                   <br>
@@ -36,7 +36,7 @@
                   <br>
                   Contraseña:
                   <br>
-                  <input type='password' name='password' placeholder='&#128272; Contraseña'>
+                  <input type='password' name='password' placeholder='&#128272; Contraseña' title='La contraseña debe de contener más de 8 carácteres, al menos una mayuscula, una minúscula y un número' pattern='/^(?=\P{Ll}*\p{Ll})(?=\P{Lu}*\p{Lu})(?=\P{N}*\p{N})(?=[\p{L}\p{N}]*[^\p{L}\p{N}])[\s\S]{8,}$/' required>
                   <br>
                   <input type='submit' name='' value='Enviar'>
                 </fieldset>

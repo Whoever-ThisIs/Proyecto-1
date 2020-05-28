@@ -1,9 +1,9 @@
 <?php
-  define("PASSWORD","DagehtmeinSchlafrhythmuslos");
+  define("KENNWORT","DagehtmeinSchlafrhythmuslos");
   define("HASH","blake2s256");
   define("METHOD","seed-ofb");
   function cifrar($text){
-    $key=openssl_digest(PASSWORD, HASH);
+    $key=openssl_digest(KENNWORT, HASH);
     $iv_len=openssl_cipher_iv_length(METHOD);
     $iv=openssl_random_pseudo_bytes($iv_len);
     $rawCif=openssl_encrypt($text,METHOD,$key,OPENSSL_RAW_DATA,$iv);
@@ -13,7 +13,7 @@
   }
 
   function descifrar($textoCifrado){
-    $key=openssl_digest(PASSWORD, HASH);
+    $key=openssl_digest(KENNWORT, HASH);
     $iv_len=openssl_cipher_iv_length(METHOD);
     $cifrado=base64_decode($textoCifrado);
     $iv=substr($cifrado,0,$iv_len);
@@ -41,7 +41,6 @@
             $codificado[] = $z_a[array_search($char, $a_z)];
         }
     }
-
     return implode('', $codificado);
   }
 
@@ -58,19 +57,63 @@
   function pepper($text){
     $abc="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
     $lon=strlen($abc);
-    $pepper = $abc[rand(0, $lon - 1) ];
+    $pepper='';
+    for ($a=0; $a < 2; $a++) {
+      $pepper .= $abc[rand(0, $lon - 1) ];
+    }
     $text .= $pepper;
     return $text;
   }
-  //Contraseña al registrarse
-  $contra="passwordty";
+
+  function registro($contra,$salt){
+    $contra1=atbash($contra);
+    $contra2=pepper($contra1);
+    $contra3 = $contra2.$salt;
+    $password=openssl_digest($contra3, HASH);
+    $password1=cifrar($password);
+    return $password1;
+  }
+
+  function acceso($icontra,$password1,$salt){
+    $password2=descifrar($password1);
+    $icontra1=atbash($icontra);
+    $abc="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    $len=strlen($abc);
+    $true=0;
+    for ($j=0; $j < $len; $j++) {
+      for ($k=0; $k < $len; $k++) {
+        $icontra3=$icontra1.$abc[$j].$abc[$k].$salt;
+        $ipassword=openssl_digest($icontra3, HASH);
+        if ($ipassword==$password2) {
+          $true++;
+        }
+      }
+    }
+    echo $ipassword."<br />".$password2."<br />".$true."<br />";
+    return $true;
+  }
+
+  function consultapass($conexion,$id,$contra){
+    $sql = "SELECT condimento FROM usuarios WHERE id_usuario='$id'";
+    $consulta_sql = mysqli_query($conexion, $sql);
+    $salt = mysqli_fetch_array($consulta_sql);
+    $sql2 = "SELECT password FROM usuarios WHERE id_usuario='$id'";
+    $consulta_sql2 = mysqli_query($conexion, $sql2);
+    $password = mysqli_fetch_array($consulta_sql2);
+    $true=acceso($contra,$password[0],$salt[0]);
+    return $true;
+  }
+  /*
+  Contraseña al registrarse
   $contra1=atbash($contra);
   $salt=salt();
   $contra2=pepper($contra1);
   $contra3 = $contra2.$salt;
   $password=openssl_digest($contra3, HASH);
   $password1=cifrar($password);
-  //Contraseña al acceder
+  return $password1;
+
+  Contraseña al acceder
   $icontra="passwordty";
   $password2=descifrar($password1);
   $icontra1=atbash($icontra);
@@ -78,10 +121,12 @@
   $len=strlen($abc);
   $true=0;
   for ($j=0; $j < $len; $j++) {
-    $icontra3=$icontra1.$abc[$j].$salt;
-    $ipassword=openssl_digest($icontra3, HASH);
-    if ($ipassword==$password2) {
-      $true++;
+    for ($k=0; $k < $len; $k++) {
+      $icontra3=$icontra1.$abc[$j].$abc[$k].$salt;
+      $ipassword=openssl_digest($icontra3, HASH);
+      if ($ipassword==$password2) {
+        $true++;
+      }
     }
   }
   if ($true==1) {
@@ -90,6 +135,7 @@
   else {
     echo "Contraseña equivocada";
   }
+  */
 
 
 ?>
