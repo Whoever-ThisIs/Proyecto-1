@@ -13,9 +13,9 @@
                 <div class='contenedor'>
                   <fieldset>
                     <legend> <h1> Que vamos a hacer hoy? </h1> </legend>
-                      <h3><a href='#'> Añadir producto </a> </h3>
+                      <h3><a href='./Añadir-producto.php'> Añadir producto </a> </h3>
                       <br>
-                      <h3><a href='#'> Modificar un producto existente </a> </h3>
+                      <h3><a href='./Modificar-producto.php'> Modificar un producto existente </a> </h3>
                       <br>
                       <h3><a href='#'> Eliminar producto </a> </h3>
                   </fieldset>
