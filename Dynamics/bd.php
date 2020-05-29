@@ -1,7 +1,7 @@
 <?php
   define("DBUSER","root");
   define("DBHOST","localhost");
-  define("PASSWORD","");
+  define("PASSWORD","root");
   function connect () {
     return mysqli_connect(DBHOST, DBUSER, PASSWORD);
   }

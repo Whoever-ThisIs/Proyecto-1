@@ -12,7 +12,7 @@
     return $valido;
   }
 
-  $conexion = mysqli_connect("localhost", "root", "", "cafeteria");
+  $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
   $usu=$_POST['tipo_usuario'];
   $nombre=$_POST['nombre'];
   $apellido=$_POST['ApellidoPat'];

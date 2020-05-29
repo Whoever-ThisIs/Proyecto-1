@@ -1,5 +1,5 @@
 <?php
-  $conexion = mysqli_connect("localhost", "root", "", "cafeteria");
+  $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
   $consulta = "SELECT * FROM colegios";
   $respuesta = mysqli_query($conexion,$consulta);
   $colegio = mysqli_fetch_array($respuesta,MYSQLI_ASSOC);
