@@ -18,7 +18,7 @@
               <body>
                 <fieldset>
                   <legend> <h1>Bienvenid@. ¿Qué desea hacer?</h1> </legend>
-                  <h3> <a href='../Templates/InicioDeSesión.html'> Iniciar sesion </a> </h3>
+                  <h3> <a href='../Templates/InicioDeSesion.html'> Iniciar sesion </a> </h3>
                   <h3> <a href='../Templates/TipoDeUsuario.html'> Registrarme  </a> </h3>
                 </fieldset>
               </body>

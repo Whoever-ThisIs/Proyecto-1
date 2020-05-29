@@ -1,5 +1,5 @@
 <?php
-  $conexion = mysqli_connect("localhost", "root", "", "cafeteria");
+  $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
   $consulta = "SELECT * FROM grupos";
   $respuesta = mysqli_query($conexion,$consulta);
   $group = mysqli_fetch_array($respuesta,MYSQLI_ASSOC);
@@ -10,17 +10,17 @@
               <title>REGISTRO DE ALUMNOS</title>
             </head>
             <body>
-              <form method='POST' action='#.php'>
+              <form method='POST' action='registro.php'>
                 <fieldset>
                   <legend> <h1> Registrar usuario </h1> </legend>
                   Nombre:
                   <br>
-                  <input type='text' name='nombre' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required placeholder='&#128100; Nombre'>
+                  <input type='text' name='nombre' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required placeholder='&#128100; Nombre' required>
                   <input type='hidden' name='tipo_usuario' value='Alumno'>
                   <br>
                   Apellido paterno:
                   <br>
-                  <input type='text' name='ApellidoPat' placeholder='&#128100; Apellido Paterno' required pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas'>
+                  <input type='text' name='ApellidoPat' placeholder='&#128100; Apellido Paterno' required pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required>
                   <br>
                   No. Cuenta:
                   <br>
@@ -28,7 +28,7 @@
                   <br>
                   Grupo:
                   <br>
-                  <select name='Grupo'>";
+                  <select name='Grupo' required>";
   echo            "<option value='" . $group['id_grupo'] . "'>". $group['grupo'] ."</option>";
   while ($group = mysqli_fetch_array($respuesta))
     echo            "<option value='" . $group['id_grupo'] . "'>". $group['grupo'] ."</option>";
@@ -36,7 +36,7 @@
                   <br>
                   Contraseña:
                   <br>
-                  <input type='password' name='password' placeholder='&#128272; Contraseña'>
+                  <input type='password' name='password' placeholder='&#128272; Contraseña' title='La contraseña debe de contener más de 8 carácteres, al menos una mayuscula, una minúscula y un número'  required>
                   <br>
                   <input type='submit' name='' value='Enviar'>
                 </fieldset>
