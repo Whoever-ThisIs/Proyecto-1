@@ -51,6 +51,7 @@
           </select><br>
           <input type='submit' value='¡ORDENA!'>
         </form>
+        <button onclick=\"location.href='cierre_sesion.php'\">Cierre de sesión</button>
     ";
     //Fin del HTML
     echo
