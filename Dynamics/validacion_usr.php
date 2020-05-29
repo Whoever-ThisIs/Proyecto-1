@@ -30,7 +30,6 @@
       $usuario = mysqli_fetch_array($consulta_usuario);
       if (isset($usuario)) {
         $true=consultapass($conexion,$usr,$password);
-        echo "$true<br>";
         if ($true==1) {
           session_name("cafeteria");
           session_id("7181414");

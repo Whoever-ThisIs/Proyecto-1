@@ -1,6 +1,7 @@
 <?php
   define("DBUSER","root");
   define("DBHOST","localhost");
+  //Si usas XAMPP, elimina la palabra root
   define("PASSWORD","root");
   function connect () {
     return mysqli_connect(DBHOST, DBUSER, PASSWORD);
