@@ -38,7 +38,7 @@
     }
     echo "</table>";
     mysqli_close($conexion);
-    echo "<button onclick=\"location.href='../Templates/pedidos.html'\">¡ORDENA!</button>";
+    echo "<button onclick=\"location.href='./ordena.php'\">¡ORDENA!</button>";
     //Fin del HTML
     echo
     "
