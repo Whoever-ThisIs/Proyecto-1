@@ -10,7 +10,7 @@
     4.- Pavón Álvarez Lenin.
 
 -GUÍA DE INSTALACIÓN EL PROYECTO:
-    1.- Instalar ATOM,  lo puedes instalar dando clik en el siguiente link https://atom.io/
+    1.- Instalar ATOM,  lo puedes instalar dando click en el siguiente link https://atom.io/
     2.- Instalar XAMPP, lo puedes obtener en la siguiente liga https://www.apachefriends.org/es/index.html
     3.- Una vez instalado XAMPP, asegurate de encender el servidor MySQL en tu panel de control XAMPP, dando clik en Start (deberas esperar hasta que esté de color verde).
     4.- Si no posee una cuenta en git, registrarse.
