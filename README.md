@@ -4,9 +4,13 @@
 ##-NOMBRE DEL EQUIPO: "Axoyotes"
 
 ###-INTEGRANTES EL EQUIPO:
+
     1. Herrera González Silvia.
+
     2. López Contreras Abraham Emilio.
+
     3. López Esquivel Emiliano.
+    
     4. Pavón Álvarez Lenin.
 
 ##GUÍA DE INSTALACIÓN EL PROYECTO:
