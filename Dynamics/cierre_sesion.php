@@ -1,9 +1,9 @@
 <?php
-  session_id
+  session_start();
   function cerrar()
   {
     session_unset();
     session_destroy();
-    header("Location:../Templates/Bienvenida.html");
   }
+  cerrar();
  ?>

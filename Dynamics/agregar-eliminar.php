@@ -49,7 +49,7 @@
         $existencia = mysqli_fetch_array($consulta);
         if ($existencia=="") {
           echo $id."<br />".$contra."<br />".$nomusr."<br />".$salt2;
-          $consulta2="INSERT INTO administradores(id_admin, Password, Nombre, condimento) VALUES ('$id','$contra''$nomusr','$salt2')";
+          $consulta2="INSERT INTO administradores(id_admin, Password, Nombre, condimento) VALUES ('$id','$contra','$nomusr','$salt2')";
           mysqli_query($conexion, $consulta2);
           echo "<h1>Se ha guardado un nuevo perfil de administrador con el ID de usuario: ".$id."</h1>";
         }

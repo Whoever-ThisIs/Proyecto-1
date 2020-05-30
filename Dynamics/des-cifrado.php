@@ -1,7 +1,7 @@
 <?php
   define("KENNWORT","DagehtmeinSchlafrhythmuslos");
-  define("HASH","blake2s256");
-  define("METHOD","seed-ofb");
+  define("HASH","sha256");
+  define("METHOD","SEED-OFB");
   function cifrar($text){
     $key=openssl_digest(KENNWORT, HASH);
     $iv_len=openssl_cipher_iv_length(METHOD);
@@ -103,7 +103,7 @@
     return $true;
   }
 
-  
+
   /*
   Contraseña al registrarse
   $contra1=atbash($contra);
