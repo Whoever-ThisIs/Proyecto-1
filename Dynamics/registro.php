@@ -86,4 +86,5 @@
       echo "<h1>Ya existe una cuenta de trabajador registrada con ese número de trabajador</h1>";
     }
   }
-  ?>
+  echo "<a href='../Templates/InicioDeSesion.html'<b>Inicio de sesión</b></a>";
+?>

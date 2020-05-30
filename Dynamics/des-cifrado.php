@@ -89,7 +89,6 @@
         }
       }
     }
-    echo $ipassword."<br />".$password2."<br />".$true."<br />";
     return $true;
   }
 
@@ -103,6 +102,8 @@
     $true=acceso($contra,$password[0],$salt[0]);
     return $true;
   }
+
+  
   /*
   Contraseña al registrarse
   $contra1=atbash($contra);
