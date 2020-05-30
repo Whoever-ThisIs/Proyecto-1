@@ -1,7 +1,7 @@
 # Proyecto-1
-##-NOMBRE DEL PROYECTO: "Proyecto de administración de cafetería."
+## - NOMBRE DEL PROYECTO: "Proyecto de administración de cafetería."
 
-##-NOMBRE DEL EQUIPO: "Axoyotes"
+## - NOMBRE DEL EQUIPO: "Axoyotes"
 
 ###-INTEGRANTES EL EQUIPO:
 
@@ -10,10 +10,10 @@
     2. López Contreras Abraham Emilio.
 
     3. López Esquivel Emiliano.
-    
+
     4. Pavón Álvarez Lenin.
 
-##GUÍA DE INSTALACIÓN EL PROYECTO:
+## GUÍA DE INSTALACIÓN EL PROYECTO:
     1. Instalar XAMPP, lo puedes obtener en la siguiente liga https://www.apachefriends.org/es/index.html.
     2. Una vez instalado XAMPP, asegurate de encender el servidor Apache y MySQL  en tu panel de control de XAMPP, dando clik en Start (deberas esperar hasta que esté de color verde).
     3. Instalar git, lo puedes Instalar con la siguinte liga https://git-scm.com/downloads.
@@ -32,7 +32,7 @@
 '
 
 
-##RESUMEN DEL FUNCIONAMIENTO DEL PROYECTO:
+## RESUMEN DEL FUNCIONAMIENTO DEL PROYECTO:
     Nuestro proyecto funciona de la siguiente manera:
     Es una página web, desde la cual la comunidad estudiantil de la preparatoria 6 "Antonio Caso" puede ordenar comida. Esta página web contempla a tres tipos de usuarios:
     ###1. ADMINISTRADORES DEL SISTEMA:
@@ -80,4 +80,4 @@
       -**ControlDeUsuario.php:** si hay un usuario muestra la información del usuario; si no hay usuario muestra que no hay usuario que coincida con el nombre. Tiene un botón de modificador de datos, conecta con modificación.php. También tiene un botón de eliminar datos, conecta con eliminacion.php.
 
 
--COMENTARIOS ADICIONALES:
+## COMENTARIOS ADICIONALES:
