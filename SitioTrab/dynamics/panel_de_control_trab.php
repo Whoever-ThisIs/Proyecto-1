@@ -3,7 +3,7 @@
   session_id("7181414");
   session_start();
   include("bd.php");
-  $_SESSION['mensajero']="Juan";
+  $_SESSION['mensajero']="Alejandro";
   $conexion = connectDB2("cafeteria");
   if(!$conexion) {
     echo mysqli_connect_error()."<br>";
@@ -20,7 +20,6 @@
         <title>Panel de control</title>
       </head>
       <body>
-
     ";
     $SQL_mensajero = "SELECT id_mensajero FROM mensajeros WHERE Nombre='$_SESSION[mensajero]'";
     $consulta_mensajero = mysqli_query($conexion, $SQL_mensajero);

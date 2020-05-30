@@ -3,7 +3,7 @@
   {
     if ($_POST['id'] >= 1) {
       $id = $_POST['id'];
-      $conexion = mysqli_connect("localhost", "root", "", "cafeteria");
+      $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
       $consulta = "SELECT * FROM alimentos WHERE id_alimento = '" . $id . "'";
       $respuesta = mysqli_query($conexion,$consulta);
       $consulta = mysqli_fetch_array($respuesta,MYSQLI_ASSOC);
@@ -24,7 +24,7 @@
                         <input type='hidden' value='". $id ."' name='id'>
                         <input type='text' value='" . $consulta['nombre'] . "' name='nombre' pattern='[A-ZÁÉÍÓÚÜÑ]{1}[a-záéíóüúñ\s]+' title='Solo puedes introducir caracteres del alfabeto latino' required>
                         <p> Precio: </p>
-                        $<input type='number' value='" . $consulta['precio'] . "' name='precio' step='.5' required>
+                        $<input type='number' value='" . $consulta['precio'] . "' name='precio' step='.1' required>
                         <br>
                         <input type='submit' value='Cambiar'>";
       }

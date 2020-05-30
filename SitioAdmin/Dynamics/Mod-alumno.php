@@ -5,7 +5,7 @@
     $grupo = $_POST['grupo'];
     $Nc = $_POST['Ncuenta'];
     $id = $_POST['id'];
-    $conexion = mysqli_connect("localhost", "root", "", "cafeteria");
+    $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
     if ($Nc == $id)
     {
       $update_nombre = "UPDATE alumnos SET nombre = \"$nombre\" WHERE Ncuenta = \"$id\"";

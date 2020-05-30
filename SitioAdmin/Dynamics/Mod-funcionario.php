@@ -5,7 +5,7 @@
     $colegio = $_POST['colegio'];
     $RFC = $_POST['RFC'];
     $id = $_POST['id'];
-    $conexion = mysqli_connect("localhost", "root", "", "cafeteria");
+    $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
     echo $id;
     if($id == $RFC)
     {

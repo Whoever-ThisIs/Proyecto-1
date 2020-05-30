@@ -36,7 +36,7 @@
                   <br>
                   Contraseña:
                   <br>
-                  <input type='password' name='password' placeholder='&#128272; Contraseña' title='La contraseña debe de contener más de 8 carácteres, al menos una mayuscula, una minúscula y un número' pattern='/^(?=\P{Ll}*\p{Ll})(?=\P{Lu}*\p{Lu})(?=\P{N}*\p{N})(?=[\p{L}\p{N}]*[^\p{L}\p{N}])[\s\S]{8,}$/' required>
+                  <input type='password' name='password' placeholder='&#128272; Contraseña' title='La contraseña debe de contener más de 8 carácteres, al menos una mayuscula, una minúscula y un número' pattern='^(?=\P{Ll}*\p{Ll})(?=\P{Lu}*\p{Lu})(?=\P{N}*\p{N})(?=[\p{L}\p{N}]*[^\p{L}\p{N}])[\s\S]{8,}$' required>
                   <br>
                   <input type='submit' name='' value='Enviar'>
                 </fieldset>

@@ -4,7 +4,7 @@
     $paterno = $_POST['Paterno'];
     $Nc = $_POST['NTrabajador'];
     $id = $_POST['id'];
-    $conexion = mysqli_connect("localhost", "root", "", "cafeteria");
+    $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
     if ($Nc == $id)
     {
       $update_nombre = "UPDATE trabajadores SET nombre = \"$nombre\" WHERE NTrabajador = \"$id\"";

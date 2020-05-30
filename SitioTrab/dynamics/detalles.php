@@ -1,7 +1,6 @@
 <?php
   $pedido=$_POST['pedido'];
   include("bd.php");
-  $_SESSION['mensajero']="Juan";
   $conexion = connectDB2("cafeteria");
   if(!$conexion) {
     echo mysqli_connect_error()."<br>";

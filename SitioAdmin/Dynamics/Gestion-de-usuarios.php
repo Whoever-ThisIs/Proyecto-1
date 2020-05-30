@@ -54,7 +54,7 @@
               <td> " . $alumno['grupo'] ." </td>
               <td> $sancion </td>
               <form method='POST' action='./Modificar-alumno.php'>
-                <input type='hidden' name='id' value='A" . $alumno['Ncuenta'] . "'>
+                <input type='hidden' name='id' value='" . $alumno['Ncuenta'] . "'>
                 <td>
                   <input type='submit' value='Editar'>
                 </td>
@@ -143,8 +143,8 @@
               <td> " . $funcionario['RFC'] . " </td>
               <td> " . $funcionario['Colegio'] . " </td>
               <td> $sancion</td>
-              <form method='POST' action='./modificar-usuario.php'>
-                <input type='hidden' name='id' value='F" . $funcionario['RFC'] . "'>
+              <form method='POST' action='./modificar-funcionario.php'>
+                <input type='hidden' name='id' value='" . $funcionario['RFC'] . "'>
                 <input type='hidden' name='tipo' value='funcionarios' >
                 <td>
                   <input type='submit' value='Editar'>
@@ -159,7 +159,7 @@
               </form>";
       if ($sancion=="Sí") {
         echo "<form action='delete-sancion.php' method='POST'>
-                <input type='hidden' name='id' value='" . $funcionario['RFC'] . "'>
+                <input type='hidden' name='id' value='F" . $funcionario['RFC'] . "'>
                 <td>
                   <input type='submit' value='Eliminar sancion'>
                 </td>
@@ -188,7 +188,7 @@
               <td> " . $trabajador['ApellidoPat'] . " </td>
               <td> " . $trabajador['NTrabajador'] . " </td>
               <td> $sancion </td>
-              <form method='POST' action='./modificar-usuario.php'>
+              <form method='POST' action='./modificar-trabajador.php'>
                 <input type='hidden' name='id' value='" . $trabajador['NTrabajador'] . "'>
                 <input type='hidden' name='tipo' value='trabajadores' >
                 <td>
@@ -217,6 +217,7 @@
         </fieldset>
       </div>
     </body>
+    <button onclick=\"location.href='Panel-Control.php'\">Volver al panel de control</button>
   </html>";
   mysqli_close($conexion);
 // }

@@ -6,7 +6,7 @@
       $precio = $_POST['precio'];
       $cantidad = $_POST['cantidad'];
       $nombre = $_POST['nombre'];
-      $conexion = mysqli_connect("localhost", "root", "", "cafeteria");
+      $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
       $consulta = "SELECT id_alimento FROM alimentos WHERE nombre = '" . $nombre . "'";
       $respuesta = mysqli_query($conexion,$consulta);
       $consulta = mysqli_fetch_array($respuesta,MYSQLI_NUM);

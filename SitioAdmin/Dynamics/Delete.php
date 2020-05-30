@@ -1,7 +1,7 @@
 <?php
   if (isset($_POST['id'])) {
     $id = $_POST['id'];
-    $conexion = mysqli_connect("localhost", "root", "", "cafeteria");
+    $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
     $consulta = "DELETE FROM menu WHERE id_alimento = \"$id\"";
     $respuesta = mysqli_query($conexion,$consulta);
     $consulta = "DELETE FROM alimentos WHERE id_alimento = \"$id\"";

@@ -69,6 +69,7 @@
                       <br>";
     echo          "</fieldset>
                 </div>
+                <button onclick=\"location.href='Panel-Control.php'\">Volver al panel de control</button>
               </body>
             </html>";
   // }

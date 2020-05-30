@@ -5,7 +5,7 @@
     $precio = $_POST['precio'];
     if ($precio >= 1)
     {
-      $conexion = mysqli_connect("localhost", "root", "", "cafeteria");
+      $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
       $consulta = "UPDATE alimentos SET nombre = \"$nombre\" WHERE id_alimento = $id";
       $consulta2 = "UPDATE alimentos SET precio = \"$precio\" WHERE id_alimento = $id";
       $respuesta = mysqli_query($conexion,$consulta);
