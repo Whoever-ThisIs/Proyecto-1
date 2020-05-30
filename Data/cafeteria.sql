@@ -88,6 +88,7 @@ CREATE TABLE `alumnos` (
 
 LOCK TABLES `alumnos` WRITE;
 /*!40000 ALTER TABLE `alumnos` DISABLE KEYS */;
+INSERT INTO `alumnos` VALUES (123456777,'Guernica','Pavón',1),(123456788,'Uwu','Uwu',1),(123456789,'Lenin','Pavón',1),(319014216,'Lenin','Pavón',1),(319014217,'Lenin','Pavón',1);
 /*!40000 ALTER TABLE `alumnos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,7 +108,7 @@ CREATE TABLE `asignaciones` (
   KEY `id_pedido` (`id_pedido`),
   CONSTRAINT `asignaciones_ibfk_1` FOREIGN KEY (`id_mensajero`) REFERENCES `mensajeros` (`id_mensajero`),
   CONSTRAINT `asignaciones_ibfk_2` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`)
-) ENGINE=InnoDB AUTO_INCREMENT=95 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -116,7 +117,7 @@ CREATE TABLE `asignaciones` (
 
 LOCK TABLES `asignaciones` WRITE;
 /*!40000 ALTER TABLE `asignaciones` DISABLE KEYS */;
-INSERT INTO `asignaciones` VALUES (1,1,NULL),(2,1,NULL),(3,1,NULL),(4,1,NULL),(5,1,NULL),(6,1,NULL),(7,1,NULL),(8,1,NULL),(9,1,NULL),(10,1,NULL),(11,2,NULL),(12,1,NULL),(13,1,NULL),(14,1,NULL),(15,1,NULL),(16,1,NULL),(17,1,NULL),(18,1,NULL),(19,2,NULL),(20,1,NULL),(21,1,NULL),(22,2,NULL),(23,1,NULL),(24,2,NULL),(25,1,NULL),(26,2,NULL),(27,1,NULL),(28,2,NULL),(29,1,NULL),(30,2,NULL),(31,1,NULL),(32,2,NULL),(33,1,NULL),(34,2,NULL),(35,1,NULL),(36,2,NULL),(37,1,NULL),(38,2,NULL),(39,1,NULL),(40,2,NULL),(41,1,NULL),(42,2,NULL),(43,1,NULL),(44,2,NULL),(45,1,NULL),(46,2,NULL),(47,1,NULL),(48,2,NULL),(49,1,NULL),(50,2,NULL),(51,1,NULL),(52,2,NULL),(53,1,NULL),(54,2,NULL),(55,1,NULL),(56,2,NULL),(57,1,NULL),(58,2,NULL),(59,1,NULL),(60,2,NULL),(61,1,NULL),(62,2,NULL),(63,1,NULL),(64,2,NULL),(65,1,NULL),(66,2,NULL),(67,1,NULL),(68,2,NULL),(69,1,NULL),(70,2,NULL),(71,1,NULL),(72,2,NULL),(73,1,NULL),(74,2,NULL),(75,1,NULL),(76,2,NULL),(77,1,NULL),(78,2,NULL),(79,1,NULL),(80,2,NULL),(81,1,NULL),(82,2,NULL),(83,1,NULL),(84,2,NULL),(85,1,NULL),(86,2,NULL),(87,1,NULL),(88,2,NULL),(89,1,NULL),(90,2,NULL),(91,1,NULL),(92,2,NULL),(93,1,NULL),(94,2,NULL);
+INSERT INTO `asignaciones` VALUES (103,1,48),(104,2,49),(105,1,50),(106,2,51),(107,1,52),(108,2,53),(109,1,54);
 /*!40000 ALTER TABLE `asignaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,8 +133,8 @@ CREATE TABLE `cancelaciones` (
   `id_pedido` int(11) NOT NULL,
   `id_usuario` varchar(14) NOT NULL,
   `id_razon` tinyint(3) NOT NULL,
-  `comentario` text NOT NULL,
-  `fecha` date NOT NULL,
+  `comentario` text,
+  `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_cancelacion`),
   KEY `pedido` (`id_pedido`),
   KEY `usuarios` (`id_usuario`),
@@ -141,7 +142,7 @@ CREATE TABLE `cancelaciones` (
   CONSTRAINT `cancelaciones_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
   CONSTRAINT `id_razon` FOREIGN KEY (`id_razon`) REFERENCES `razones` (`id_razon`),
   CONSTRAINT `pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -150,6 +151,7 @@ CREATE TABLE `cancelaciones` (
 
 LOCK TABLES `cancelaciones` WRITE;
 /*!40000 ALTER TABLE `cancelaciones` DISABLE KEYS */;
+INSERT INTO `cancelaciones` VALUES (2,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:20:46'),(3,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:21:47'),(4,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:21:58'),(5,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:22:48'),(6,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:28:14'),(7,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:32:14'),(8,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:34:07'),(9,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:34:51'),(10,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:37:30'),(11,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:40:08'),(12,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:44:29'),(13,48,'A319014217',1,NULL,'2020-05-29 23:47:13'),(14,48,'A319014217',1,NULL,'2020-05-29 23:47:51'),(15,48,'A319014217',1,NULL,'2020-05-29 23:56:12'),(16,54,'A319014217',1,NULL,'2020-05-30 00:06:56');
 /*!40000 ALTER TABLE `cancelaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -194,7 +196,7 @@ CREATE TABLE `entregas` (
   KEY `id_menu` (`id_menu`),
   CONSTRAINT `entregas_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`),
   CONSTRAINT `entregas_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -203,7 +205,7 @@ CREATE TABLE `entregas` (
 
 LOCK TABLES `entregas` WRITE;
 /*!40000 ALTER TABLE `entregas` DISABLE KEYS */;
-INSERT INTO `entregas` VALUES (1,13,1,7),(2,14,1,6),(3,15,1,5),(4,16,1,4),(5,16,1,4),(6,17,1,3),(7,18,1,2),(8,19,1,1),(9,20,1,0),(10,21,2,1),(11,22,2,1),(12,23,2,1),(13,24,2,1),(14,25,2,1),(15,26,2,1),(16,27,2,1),(17,28,2,1),(18,29,2,7),(19,30,1,3),(20,31,1,1),(21,32,1,4),(22,33,1,1),(23,34,1,1),(24,35,2,7),(25,35,3,8),(26,35,4,12),(27,36,1,1),(28,36,2,2),(29,36,3,92),(30,36,4,30),(31,37,1,4),(32,38,1,2),(33,39,1,1);
+INSERT INTO `entregas` VALUES (42,48,1,2),(43,49,1,1),(44,50,1,6),(45,50,2,2),(46,51,3,3),(47,52,1,1),(48,53,1,1),(49,54,1,1);
 /*!40000 ALTER TABLE `entregas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,7 +220,7 @@ CREATE TABLE `estatus` (
   `id_estatus` tinyint(2) NOT NULL AUTO_INCREMENT,
   `estatus` varchar(20) NOT NULL,
   PRIMARY KEY (`id_estatus`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -227,7 +229,7 @@ CREATE TABLE `estatus` (
 
 LOCK TABLES `estatus` WRITE;
 /*!40000 ALTER TABLE `estatus` DISABLE KEYS */;
-INSERT INTO `estatus` VALUES (1,'En proceso'),(2,'Entregada');
+INSERT INTO `estatus` VALUES (1,'En proceso'),(2,'Entregado'),(3,'Cancelado');
 /*!40000 ALTER TABLE `estatus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -255,6 +257,7 @@ CREATE TABLE `funcionarios` (
 
 LOCK TABLES `funcionarios` WRITE;
 /*!40000 ALTER TABLE `funcionarios` DISABLE KEYS */;
+INSERT INTO `funcionarios` VALUES (1,'Lenin','Pavón','AAAA9007151H0');
 /*!40000 ALTER TABLE `funcionarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -269,7 +272,7 @@ CREATE TABLE `grupos` (
   `id_grupo` tinyint(4) NOT NULL AUTO_INCREMENT,
   `grupo` smallint(10) NOT NULL,
   PRIMARY KEY (`id_grupo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -293,13 +296,13 @@ CREATE TABLE `lista_negra` (
   `id_lista_negra` int(11) NOT NULL AUTO_INCREMENT,
   `id_usuario` varchar(14) NOT NULL,
   `id_cancelacion` int(11) NOT NULL,
-  `fecha_final` date NOT NULL,
+  `fecha_final` datetime DEFAULT NULL,
   PRIMARY KEY (`id_lista_negra`),
   KEY `cancelacion` (`id_usuario`),
   KEY `id_cancelacion` (`id_cancelacion`),
   CONSTRAINT `lista_negra_ibfk_1` FOREIGN KEY (`id_cancelacion`) REFERENCES `cancelaciones` (`id_cancelacion`),
   CONSTRAINT `lista_negra_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -308,6 +311,7 @@ CREATE TABLE `lista_negra` (
 
 LOCK TABLES `lista_negra` WRITE;
 /*!40000 ALTER TABLE `lista_negra` DISABLE KEYS */;
+INSERT INTO `lista_negra` VALUES (1,'A319014217',11,'2020-06-03 18:40:08'),(2,'A319014217',12,'2020-06-03 18:44:29'),(3,'A319014217',12,'2020-06-03 18:44:29'),(4,'A319014217',12,'2020-06-03 18:44:29'),(5,'A319014217',12,'2020-06-03 18:44:29'),(6,'A319014217',13,'2020-06-03 18:47:13'),(7,'A319014217',14,'2020-06-03 18:47:51'),(8,'A319014217',15,'2020-06-03 18:56:12'),(9,'A319014217',16,'2020-06-03 19:06:56');
 /*!40000 ALTER TABLE `lista_negra` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -401,7 +405,7 @@ CREATE TABLE `pedidos` (
   `id_asignacion` int(11) NOT NULL,
   `Costo` float(6,2) NOT NULL,
   `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `lugar` smallint(7) DEFAULT NULL,
+  `lugar` smallint(7) NOT NULL,
   `id_estatus` tinyint(2) NOT NULL,
   PRIMARY KEY (`id_pedido`),
   KEY `usuario` (`id_usuario`),
@@ -412,7 +416,7 @@ CREATE TABLE `pedidos` (
   CONSTRAINT `pedidos_ibfk_3` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
   CONSTRAINT `pedidos_ibfk_4` FOREIGN KEY (`lugar`) REFERENCES `lugares` (`id_lugar`),
   CONSTRAINT `pedidos_ibfk_5` FOREIGN KEY (`id_asignacion`) REFERENCES `asignaciones` (`id_asignacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -421,7 +425,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (1,'root',56,13.50,'2020-05-27 20:11:22',1,1),(2,'root',57,13.50,'2020-05-27 20:12:33',1,1),(3,'root',58,13.50,'2020-05-27 20:12:34',1,1),(4,'root',59,13.50,'2020-05-27 20:12:34',1,1),(5,'root',60,50.00,'2020-05-27 22:30:27',3,1),(6,'root',61,13.50,'2020-05-27 22:07:51',1,1),(7,'root',62,13.50,'2020-05-27 22:07:52',1,1),(8,'root',63,13.50,'2020-05-27 22:07:53',1,1),(9,'root',64,13.50,'2020-05-27 22:08:06',1,1),(10,'root',65,13.50,'2020-05-27 22:08:41',1,1),(11,'root',66,13.50,'2020-05-27 22:08:42',1,1),(12,'root',67,13.50,'2020-05-27 22:08:42',1,1),(13,'root',68,13.50,'2020-05-27 22:08:58',1,1),(14,'root',69,13.50,'2020-05-27 22:08:59',1,1),(15,'root',70,13.50,'2020-05-27 22:09:13',1,1),(16,'root',71,13.50,'2020-05-27 22:09:29',1,1),(17,'root',72,13.50,'2020-05-27 22:09:48',1,1),(18,'root',73,13.50,'2020-05-27 22:09:49',1,1),(19,'root',74,13.50,'2020-05-27 22:09:50',1,1),(20,'root',75,13.50,'2020-05-27 22:09:50',1,1),(21,'root',76,12.00,'2020-05-27 22:10:52',1,1),(22,'root',77,12.00,'2020-05-27 22:10:53',1,1),(23,'root',78,12.00,'2020-05-27 22:10:54',1,1),(24,'root',79,12.00,'2020-05-27 22:10:54',1,1),(25,'root',80,12.00,'2020-05-27 22:10:54',1,1),(26,'root',81,12.00,'2020-05-27 22:20:25',1,1),(27,'root',82,12.00,'2020-05-27 22:20:26',1,1),(28,'root',83,12.00,'2020-05-27 22:20:27',1,1),(29,'root',84,372.00,'2020-05-27 22:50:33',1,1),(30,'root',85,40.50,'2020-05-27 22:53:45',2,1),(31,'root',86,13.50,'2020-05-27 22:53:54',1,1),(32,'root',87,54.00,'2020-05-27 22:59:47',1,1),(33,'root',88,13.50,'2020-05-27 23:01:43',1,1),(34,'root',89,13.50,'2020-05-27 23:03:36',1,1),(35,'root',90,4900.00,'2020-05-28 00:49:24',1,1),(36,'uwu',91,3384.00,'2020-05-28 01:46:59',1,1),(37,'uwu',92,54.00,'2020-05-28 02:04:13',1,1),(38,'uwu',93,27.00,'2020-05-28 02:05:39',1,1),(39,'uwu',94,13.50,'2020-05-28 02:10:12',1,1);
+INSERT INTO `pedidos` VALUES (48,'A319014217',103,27.00,'2020-05-29 23:56:12',1,3),(49,'A319014217',104,13.50,'2020-05-29 18:29:48',1,1),(50,'A319014217',105,133.50,'2020-05-30 00:02:34',1,2),(51,'A319014217',106,36.00,'2020-05-30 00:02:52',1,1),(52,'A319014217',107,13.50,'2020-05-30 00:06:47',1,2),(53,'A319014217',108,13.50,'2020-05-30 00:06:03',1,1),(54,'A319014217',109,13.50,'2020-05-30 00:06:56',1,3);
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -449,6 +453,7 @@ CREATE TABLE `profesores` (
 
 LOCK TABLES `profesores` WRITE;
 /*!40000 ALTER TABLE `profesores` DISABLE KEYS */;
+INSERT INTO `profesores` VALUES ('BBBB9007151H0',1,'Lenin','Pavón');
 /*!40000 ALTER TABLE `profesores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -463,7 +468,7 @@ CREATE TABLE `razones` (
   `id_razon` tinyint(3) NOT NULL AUTO_INCREMENT,
   `razon` text NOT NULL,
   PRIMARY KEY (`id_razon`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -472,6 +477,7 @@ CREATE TABLE `razones` (
 
 LOCK TABLES `razones` WRITE;
 /*!40000 ALTER TABLE `razones` DISABLE KEYS */;
+INSERT INTO `razones` VALUES (1,'No se liquidó el pedido'),(2,'No se presentó a recoger el pedido'),(3,'Petición del usuario'),(4,'Otro');
 /*!40000 ALTER TABLE `razones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -496,6 +502,7 @@ CREATE TABLE `trabajadores` (
 
 LOCK TABLES `trabajadores` WRITE;
 /*!40000 ALTER TABLE `trabajadores` DISABLE KEYS */;
+INSERT INTO `trabajadores` VALUES ('123456789','Lenin','Pavón'),('516689000','Augusto','Augusto');
 /*!40000 ALTER TABLE `trabajadores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -520,7 +527,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES ('root','root','a'),('uwu','uwu','uwu');
+INSERT INTO `usuarios` VALUES ('A123456777','8DaOT/lgWalFMz6cTKuprQ==','01HqHjY0yG$y4Eg'),('A123456788','KGxRYSpxAg6zJfEpARJaRw==','C6pAzV%f(m(nihv'),('A123456789','xhi18grGGRhgwCCfbASCUA==','Hg/vMW1W?rK3l7#'),('A319014216','10beTOaYhXKf0ZYn+AD95g==','1OM7kHx6cTk$n9r'),('A319014217','tffN5+srALU1k9OcQicpJ8rEVnLfYL1nkq0TT0Rwv+pNXeokEBO7M9+t7ixEqbuxN46R27SQYyvDZO+JqKofB+45/k5hKPn5v4Ze6i0atHA=','Jzxwr4lWIN2QCeO'),('FAAAA9007151H0','GE86Grx24vt55x0/DD42Ug==','QzzpBL!yz?4gdCh'),('PBBBB9007151H0','wZ5ybYZjYj/feVI+EOthZQ==','%dZNSDvWXDQ)$C%'),('root','root','a'),('T123456789','09/hBB9/lUyFuf3N+1KIpg==','w4ek&Wt4FAfyEIA'),('T516689000','A0uzS8Ex9lRwW349GAwPLg==','qd7gbNhnbOS&/A9'),('uwu','uwu','uwu');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -533,4 +540,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-28 15:21:11
+-- Dump completed on 2020-05-29 19:49:48

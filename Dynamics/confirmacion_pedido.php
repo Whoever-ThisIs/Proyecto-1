@@ -74,7 +74,10 @@
 
             $SQL_entrega = "INSERT INTO entregas(id_pedido, id_menu, cantidad) VALUES ($id_pedido[0], $alimento_entrega[0], $cantidad_usr)";
             $consulta_entrega = mysqli_query($conexion, $SQL_entrega);
-            $entrega = mysqli_fetch_array($consulta_entrega);
+
+            $SQL_pedido_en_entrega = "UPDATE asignaciones SET id_pedido=$id_pedido[0] WHERE id_asignacion = $id_asignacion[0];";
+            $consulta_pedido_en_entrega = mysqli_query($conexion, $SQL_pedido_en_entrega);
+            echo "$SQL_pedido_en_entrega";
           }
           else {
             //Lugar
