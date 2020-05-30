@@ -110,7 +110,7 @@
                               <td> " . $funcionario['RFC'] . " </td>
                               <td> " . $funcionario['Colegio'] . " </td>
                               <td> </td>
-                              <form method='POST' action='./modificar-usuario.php'>
+                              <form method='POST' action='./modificar-funcionario.php'>
                                 <input type='hidden' name='id' value='" . $funcionario['RFC'] . "'>
                                 <input type='hidden' name='tipo' value='funcionarios' >
                                 <td>
@@ -145,7 +145,7 @@
                               <td> " . $trabajador['ApellidoPat'] . " </td>
                               <td> " . $trabajador['NTrabajador'] . " </td>
                               <td> </td>
-                              <form method='POST' action='./modificar-usuario.php'>
+                              <form method='POST' action='./modificar-trabajador.php'>
                                 <input type='hidden' name='id' value='" . $trabajador['NTrabajador'] . "'>
                                 <input type='hidden' name='tipo' value='trabajadores' >
                                 <td>

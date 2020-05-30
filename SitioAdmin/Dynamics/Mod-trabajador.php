@@ -1,32 +1,28 @@
 <?php
-  if (isset($_POST['nombre']) && isset($_POST['Paterno']) && isset($_POST['grupo']) && isset($_POST['Ncuenta']) && isset($_POST['id'])) {
+  if (isset($_POST['nombre']) && isset($_POST['Paterno']) && isset($_POST['NTrabajador']) && isset($_POST['id'])) {
     $nombre = $_POST['nombre'];
     $paterno = $_POST['Paterno'];
-    $grupo = $_POST['grupo'];
-    $Nc = $_POST['Ncuenta'];
+    $Nc = $_POST['NTrabajador'];
     $id = $_POST['id'];
     $conexion = mysqli_connect("localhost", "root", "", "cafeteria");
     if ($Nc == $id)
     {
-      $update_nombre = "UPDATE alumnos SET nombre = \"$nombre\" WHERE Ncuenta = \"$id\"";
-      $update_paterno = "UPDATE alumnos SET ApellidoPat = \"$paterno\" WHERE Ncuenta = \"$id\"";
-      $update_grupo = "UPDATE alumnos SET Grupo = \"$grupo\" WHERE Ncuenta = \"$id\"";
-      mysqli_query($conexion,$update_grupo);
+      $update_nombre = "UPDATE trabajadores SET nombre = \"$nombre\" WHERE NTrabajador = \"$id\"";
+      $update_paterno = "UPDATE trabajadores SET ApellidoPat = \"$paterno\" WHERE NTrabajador = \"$id\"";
       mysqli_query($conexion,$update_paterno);
       mysqli_query($conexion,$update_nombre);
       mysqli_close($conexion);
       header('location: ./Gestion-de-usuarios.php');
     }
     else {
-      $consulta = "SELECT * FROM alumnos WHERE Ncuenta = \"$Nc\"";
+      $consulta = "SELECT * FROM trabajadores WHERE NTrabajador = \"$Nc\"";
       mysqli_query($conexion,$consulta);
       $conicidencias = mysqli_affected_rows($conexion);
       if ($conicidencias == 0) {
-        $update_nombre = "UPDATE alumnos SET nombre = \"$nombre\" WHERE Ncuenta = \"$id\"";
-        $update_paterno = "UPDATE alumnos SET ApellidoPat = \"$paterno\" WHERE Ncuenta = \"$id\"";
-        $update_grupo = "UPDATE alumnos SET Grupo = \"$grupo\" WHERE Ncuenta = \"$id\"";
-        $update_nc = "UPDATE alumnos SET Ncuenta = \"$Nc\" WHERE Ncuenta = \"$id\"";
-        $update_nc_users = "UPDATE users SET id_usuario = \"A$Nc\" WHERE id_usuario = \"A$id\"";
+        $update_nombre = "UPDATE trabajadores SET nombre = \"$nombre\" WHERE NTrabajador = \"$id\"";
+        $update_paterno = "UPDATE trabajadores SET ApellidoPat = \"$paterno\" WHERE NTrabajador = \"$id\"";
+        $update_nc = "UPDATE trabajadores SET NTrabajador = \"$Nc\" WHERE NTrabajador = \"$id\"";
+        $update_nc_users = "UPDATE users SET id_usuario = \"T$Nc\" WHERE id_usuario = \"T$id\"";
         mysqli_query($conexion,$update_grupo);
         mysqli_query($conexion,$update_paterno);
         mysqli_query($conexion,$update_nombre);
