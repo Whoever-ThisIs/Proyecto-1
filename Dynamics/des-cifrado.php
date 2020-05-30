@@ -103,40 +103,32 @@
     return $true;
   }
 
-  
-  /*
-  Contraseña al registrarse
-  $contra1=atbash($contra);
-  $salt=salt();
-  $contra2=pepper($contra1);
-  $contra3 = $contra2.$salt;
-  $password=openssl_digest($contra3, HASH);
-  $password1=cifrar($password);
-  return $password1;
+  function consultapass2($conexion,$id,$contra){
+    $sql = "SELECT condimento FROM administradores WHERE id_admin='$id'";
+    $consulta_sql = mysqli_query($conexion, $sql);
+    $salt = mysqli_fetch_array($consulta_sql);
+    $sql2 = "SELECT password FROM administradores WHERE id_admin='$id'";
+    $consulta_sql2 = mysqli_query($conexion, $sql2);
+    $password = mysqli_fetch_array($consulta_sql2);
+    $true=acceso($contra,$password[0],$salt[0]);
+    return $true;
+  }
 
-  Contraseña al acceder
-  $icontra="passwordty";
-  $password2=descifrar($password1);
-  $icontra1=atbash($icontra);
-  $abc="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  $len=strlen($abc);
-  $true=0;
-  for ($j=0; $j < $len; $j++) {
-    for ($k=0; $k < $len; $k++) {
-      $icontra3=$icontra1.$abc[$j].$abc[$k].$salt;
-      $ipassword=openssl_digest($icontra3, HASH);
-      if ($ipassword==$password2) {
-        $true++;
-      }
-    }
+  function consultapass3($conexion,$id,$contra){
+    $sql = "SELECT condimento FROM mensajeros WHERE nIdentificador='$id'";
+    $consulta_sql = mysqli_query($conexion, $sql);
+    $salt = mysqli_fetch_array($consulta_sql);
+    $sql2 = "SELECT password FROM mensajeros WHERE nIdentificador='$id'";
+    $consulta_sql2 = mysqli_query($conexion, $sql2);
+    $password = mysqli_fetch_array($consulta_sql2);
+    $true=acceso($contra,$password[0],$salt[0]);
+    return $true;
   }
-  if ($true==1) {
-    echo "Misma contraseña";
-  }
-  else {
-    echo "Contraseña equivocada";
-  }
-  */
 
+  function escapeall($cadena){
+    $a=htmlspecialchars($cadena);
+    $b=strip_tags($a);
+    echo $b;
+  }
 
 ?>

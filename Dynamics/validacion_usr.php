@@ -25,11 +25,31 @@
     $password = (isset($_POST['password']) && $_POST['password'] != "") ? $_POST['password'] : false ;
     $usr = (isset($_POST['id']) && $_POST['id'] != "") ? $_POST['id'] : false ;
     if ($usr!==false&&$password!==false) {
-      $SQL_usuario = "SELECT id_usuario FROM usuarios WHERE id_usuario='$usr'";
-      $consulta_usuario = mysqli_query($conexion, $SQL_usuario);
-      $usuario = mysqli_fetch_array($consulta_usuario);
+      if (preg_match('/^AD/',$usr)) {
+        $SQL_usuario = "SELECT id_admin FROM administradores WHERE id_admin='$usr'";
+        $consulta_usuario = mysqli_query($conexion, $SQL_usuario);
+        $usuario = mysqli_fetch_array($consulta_usuario);
+      }
+      elseif (preg_match('/^M/',$usr)) {
+        $SQL_usuario = "SELECT nIdentificador FROM mensajeros WHERE nIdentificador='$usr'";
+        $consulta_usuario = mysqli_query($conexion, $SQL_usuario);
+        $usuario = mysqli_fetch_array($consulta_usuario);
+      }
+      else {
+        $SQL_usuario = "SELECT id_usuario FROM usuarios WHERE id_usuario='$usr'";
+        $consulta_usuario = mysqli_query($conexion, $SQL_usuario);
+        $usuario = mysqli_fetch_array($consulta_usuario);
+      }
       if (isset($usuario)) {
-        $true=consultapass($conexion,$usr,$password);
+        if (preg_match('/^AD/',$usr)) {
+          $true=consultapass2($conexion,$usr,$password);
+        }
+        elseif (preg_match('/^M/',$usr)) {
+          $true=consultapass3($conexion,$usr,$password);
+        }
+        else {
+          $true=consultapass($conexion,$usr,$password);
+        }
         if ($true==1) {
           session_name("cafeteria");
           session_id("7181414");
@@ -49,12 +69,12 @@
         else
         {
           echo "Ningún usuario coincide con esa contraseña <br>
-          <button onclick=\"location.href='../templates/InicioDeSesión.html'\">Inicio de sesión</button>";
+          <button onclick=\"location.href='../templates/InicioDeSesion.html'\">Inicio de sesión</button>";
         }
       }
       else {
         echo "No hay ningún usuario con ese nombre <br>
-        <button onclick=\"location.href='Bienvenida.php'\">Registro</button>";
+        <button onclick=\"location.href='DBConnect.php'\">Registro</button>";
       }
     }
     else

@@ -30,11 +30,11 @@
       $contra=registro($paso,$salt2);
       if ($tipo=="Mensajero") {
         $id = "M".$id0;
-        $sql = "SELECT * FROM mensajeros WHERE id_mensajero='$id'";
+        $sql = "SELECT * FROM mensajeros WHERE nIdentificador='$id'";
         $consulta = mysqli_query($conexion, $sql);
         $existencia = mysqli_fetch_array($consulta);
         if ($existencia=="") {
-          $consulta2="INSERT INTO mensajeros(id_mensajero, nombre, Password,condimento) VALUES ('$id', '$nomusr','$contra','$salt2')";
+          $consulta2="INSERT INTO mensajeros(nombre, Password, nIdentificador, condimento) VALUES ('$nomusr','$contra', '$id','$salt2')";
           mysqli_query($conexion, $consulta2);
           echo "<h1>Se ha guardado un nuevo perfil de mensajero con el ID de usuario: ".$id."</h1>";
         }
@@ -49,7 +49,7 @@
         $existencia = mysqli_fetch_array($consulta);
         if ($existencia=="") {
           echo $id."<br />".$contra."<br />".$nomusr."<br />".$salt2;
-          $consulta2="INSERT INTO administradores(id_admin, Password, Nombre, condimento) VALUES ('$id','$contra''$nomusr','$salt2')";
+          $consulta2="INSERT INTO administradores(id_admin, Password, Nombre, condimento) VALUES ('$id','$contra','$nomusr','$salt2')";
           mysqli_query($conexion, $consulta2);
           echo "<h1>Se ha guardado un nuevo perfil de administrador con el ID de usuario: ".$id."</h1>";
         }
@@ -61,11 +61,11 @@
     if ($accion=="eliminar") {
       if ($tipo=="Mensajero") {
         $id = "M".$id0;
-        $sql = "SELECT * FROM mensajeros WHERE id_mensajero='$id'";
+        $sql = "SELECT * FROM mensajeros WHERE nIdentificador='$id'";
         $consulta = mysqli_query($conexion, $sql);
         $existencia = mysqli_fetch_array($consulta);
         if ($existencia!="") {
-          $consulta2="DELETE FROM mensajeros WHERE id_mensajero='$id'";
+          $consulta2="DELETE FROM mensajeros WHERE nIdentificador='$id'";
           mysqli_query($conexion, $consulta2);
           echo "<h1>Se ha borrado exitosamente el perfil de mensajeros con el ID de usuario: ".$id."</h1>";
         }
