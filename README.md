@@ -41,7 +41,7 @@
     ### 2. MENSAJEROS:
      Son los encargados de verificar las órdenes y de hacer la entrega de los pedidos. Ellos pueden finalizar la entrega con éxito, o en el caso que el cliente no liquide, tenga un retraso o no recoja su pedido, el supervisor es capaz de aplicar una sanción (el cliente no podrá ordenar comida durante 5 días hábiles).
 
-    ### 3. CLIENTE: tenemos 4 categorias distintas, las cuales son:
+    #3. CLIENTE: tenemos 4 categorias distintas, las cuales son:
     +Profesor: Su cuenta contiene su nombre, grupo y usuario (No. cuenta).
     +Funcionario: su cuenta contara con nombre, colegio y un usuario, el cual será su RFC
     +Trabajador: su cuenta contara con nombre, colegio y un usuario, el cual será su RFC.
@@ -50,9 +50,9 @@
     Utilizamos HTML como maquetado. Los archivos de este tipo se encuentran dentro de la carpeta Templates, que es en donde se encuentran todos los maquetados del Sitio Accesible por el usuario:
     -**Registro.html:** se conecta con Alumnos.php, Profesor.php, Funcionario.php y Trabajador.html; para enviar el tipo de usuario.
     -**Alumnos.html:** hace la validación de datos, nombres (uno o dos), número de cuenta (9 dígitos), grupo, contraseña (8 o más caracteres, al menos un caracter especial, al menos un número).
-    -**Profesor.html:** validación de datos; nombre (uno o dos nombres), colegio con select, RFC, contraseña (8 o más caracteres, al menos un caracter especial, al menos un número).
+    -** Profesor.html: ** validación de datos; nombre (uno o dos nombres), colegio con select, RFC, contraseña (8 o más caracteres, al menos un caracter especial, al menos un número).
     -**Funcionario.html:** validación de datos; nombre (uno o dos nombres), colegio con select, RFC, contraseña (8 o más caracteres, al menos un caracter especial, al menos un número).
-    -**Trabajador.html:** validación de datos; nombres (uno o dos), número de trabajador (9 números), contraseña (8 o más caracteres, al menos un caracter especial, al menos un número).
+    -** Trabajador.html: ** validación de datos; nombres (uno o dos), número de trabajador (9 números), contraseña (8 o más caracteres, al menos un caracter especial, al menos un número).
     -**Inicio de sesión.html:** aqui se ingresa el usuario y la contraseña, y se hace una validación de datos del usuario, si el usuario es administrador se le enviara al panel de control, si es mensajero se le enviara a la lista de pedidos que tiene pendiente y si es profesor, alumno, trabajador o funcionario se le enviara al menu.
 
     También tenemos los del Sitio del Administrador, los cuales son:
