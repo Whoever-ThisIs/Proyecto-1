@@ -4,7 +4,7 @@
   // session_start();
   // if (isset($_SESSION['']))
   // {
-  $conexion = mysqli_connect("localhost", "root", "", "cafeteria");
+  $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
   if (isset($_POST['filtro']))
   {
     $filtro = $_POST['filtro'];
