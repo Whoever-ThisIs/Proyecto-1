@@ -67,7 +67,7 @@
               </form>";
       if ($sancion=="Sí") {
         echo "<form action='delete-sancion.php' method='POST'>
-                <input type='hidden' name='id' value='" . $alumno['Ncuenta'] . "'>
+                <input type='hidden' name='id' value='A" . $alumno['Ncuenta'] . "'>
                 <td>
                   <input type='submit' value='Eliminar sancion'>
                 </td>
