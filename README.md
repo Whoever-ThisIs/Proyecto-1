@@ -1,19 +1,19 @@
 # Proyecto-1
-##-NOMBRE DEL PROYECTO: "Proyecto de administración de cafetería."
+## - NOMBRE DEL PROYECTO: "Proyecto de administración de cafetería."
 
-##-NOMBRE DEL EQUIPO: "Axoyotes"
+## - NOMBRE DEL EQUIPO: "Axoyotes"
 
-###-INTEGRANTES EL EQUIPO:
+### - INTEGRANTES EL EQUIPO:
 
     1. Herrera González Silvia.
 
     2. López Contreras Abraham Emilio.
 
     3. López Esquivel Emiliano.
-    
+
     4. Pavón Álvarez Lenin.
 
-##GUÍA DE INSTALACIÓN EL PROYECTO:
+## GUÍA DE INSTALACIÓN EL PROYECTO:
     1. Instalar XAMPP, lo puedes obtener en la siguiente liga https://www.apachefriends.org/es/index.html.
     2. Una vez instalado XAMPP, asegurate de encender el servidor Apache y MySQL  en tu panel de control de XAMPP, dando clik en Start (deberas esperar hasta que esté de color verde).
     3. Instalar git, lo puedes Instalar con la siguinte liga https://git-scm.com/downloads.
@@ -32,16 +32,16 @@
 '
 
 
-##RESUMEN DEL FUNCIONAMIENTO DEL PROYECTO:
+## RESUMEN DEL FUNCIONAMIENTO DEL PROYECTO:
     Nuestro proyecto funciona de la siguiente manera:
     Es una página web, desde la cual la comunidad estudiantil de la preparatoria 6 "Antonio Caso" puede ordenar comida. Esta página web contempla a tres tipos de usuarios:
-    ###1. ADMINISTRADORES DEL SISTEMA:
+    ### 1. ADMINISTRADORES DEL SISTEMA:
     Son los encargados de agregar, modificar o eliminar los productos de la cafetería, pueden regular la cantidad de usuarios y la modificación de su información.
 
-    ###2. MENSAJEROS:
+    ### 2. MENSAJEROS:
      Son los encargados de verificar las órdenes y de hacer la entrega de los pedidos. Ellos pueden finalizar la entrega con éxito, o en el caso que el cliente no liquide, tenga un retraso o no recoja su pedido, el supervisor es capaz de aplicar una sanción (el cliente no podrá ordenar comida durante 5 días hábiles).
 
-    ###3. CLIENTE: tenemos 4 categorias distintas, las cuales son:
+    ### 3. CLIENTE: tenemos 4 categorias distintas, las cuales son:
     +Profesor: Su cuenta contiene su nombre, grupo y usuario (No. cuenta).
     +Funcionario: su cuenta contara con nombre, colegio y un usuario, el cual será su RFC
     +Trabajador: su cuenta contara con nombre, colegio y un usuario, el cual será su RFC.
@@ -80,4 +80,4 @@
       -**ControlDeUsuario.php:** si hay un usuario muestra la información del usuario; si no hay usuario muestra que no hay usuario que coincida con el nombre. Tiene un botón de modificador de datos, conecta con modificación.php. También tiene un botón de eliminar datos, conecta con eliminacion.php.
 
 
--COMENTARIOS ADICIONALES:
+## COMENTARIOS ADICIONALES:
