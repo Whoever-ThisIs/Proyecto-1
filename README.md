@@ -121,3 +121,4 @@
 -Al principio del proyecto nuestro equipo estaba conformado por 5 integrantes. Pero uno de ellos nos expreso que no podía seguir trabajando a este ritmo, por lo cual abandonaría el curso, quedando nuestro equipo conformado de 4 integrantes.:pensive:
 -Nuestro compañero Abraham tenía unas cosas que nunca pudo subir, ya que se atraso y el sistema no le permitía subir cosas porque tenía que actualizar en varias ocaciones.
 -Nuestra compañera Silvia tuvo varios problemas al interactuar con la base de datos y con la carpeta Dynamics, ya que tenía un error extraño que decía que el acceso estaba denegado.
+-Cuando creíamos que por fin ya íbamos a terminar el proyecto, nos dimos cuenta de que nos equivocamos, y no era cifrar($nombre), sino que era cifrar($id). Intentamos cambiarlo, pero al intentarlo, el proyecto dejaba de funcionar, y decidimos dejarlo así.:cry:
