@@ -4,13 +4,13 @@
 
 -NOMBRE DEL EQUIPO: "Axoyotes"
 
--INTEGRANTES EL EQUIPO:
+-**INTEGRANTES EL EQUIPO:**
     1.- Herrera González Silvia.
     2.- López Contreras Abraham Emilio.
     3.- López Esquivel Emiliano.
     4.- Pavón Álvarez Lenin.
 
--GUÍA DE INSTALACIÓN EL PROYECTO:
+-**GUÍA DE INSTALACIÓN EL PROYECTO:**
     1.- Instalar ATOM,  lo puedes instalar dando click en el siguiente enlace https://atom.io/
     2.- Instalar XAMPP, lo puedes obtener en el siguiente enlace https://www.apachefriends.org/es/index.html
     3.- Una vez instalado XAMPP, asegurate de encender el servidor MySQL desde tu panel de control XAMPP, dando clik en Start (deberas esperar hasta que esté de color verde).
@@ -25,7 +25,7 @@
     12.- Pegar la base de datos en la consola utilizando: source <pegar la base de datos>
     13.- Abrir en el navegador el archivo de "Bienvenida.php"
 
--RESUMEN DEL FUNCIONAMIENTO DEL PROYECTO:
+-**RESUMEN DEL FUNCIONAMIENTO DEL PROYECTO:**
 =======
 ## - NOMBRE DEL PROYECTO: "Proyecto de administración de cafetería."
 
@@ -41,7 +41,7 @@
 
     4. Pavón Álvarez Lenin.
 
-## GUÍA DE INSTALACIÓN EL PROYECTO:
+## **GUÍA DE INSTALACIÓN EL PROYECTO:**
     1. Instalar XAMPP, lo puedes obtener en la siguiente liga https://www.apachefriends.org/es/index.html.
     2. Una vez instalado XAMPP, asegurate de encender el servidor Apache y MySQL  en tu panel de control de XAMPP, dando clik en Start (deberas esperar hasta que esté de color verde).
     3. Instalar git, lo puedes Instalar con la siguinte liga https://git-scm.com/downloads.
@@ -60,7 +60,7 @@
 '
 
 
-## RESUMEN DEL FUNCIONAMIENTO DEL PROYECTO:
+## **RESUMEN DEL FUNCIONAMIENTO DEL PROYECTO:**
 >>>>>>> 08ea5aca3b54274fdc12c1d747aa56e459e7b89c
     Nuestro proyecto funciona de la siguiente manera:
     Es una página web, desde la cual la comunidad estudiantil de la preparatoria 6 "Antonio Caso" puede ordenar comida. Esta página web contempla a tres tipos de usuarios:
@@ -110,7 +110,7 @@
       -**Admin.php:** establece una cuenta de administrador usuarios: AD1, contraseña: CoddPHP<3
 
 
-## COMENTARIOS ADICIONALES: :pencil2:
+## **COMENTARIOS ADICIONALES:** :pencil2:
 **Dificultades en dispositivos MAC:**
 -Debido a las diferencias entre la instalacion, al momento de cifrar los datos o de generar las contraseñas, puede que no se genere una codificación base64 suficientemente larga como para que pueda ser detectada al momento de descifrarse.
 **Trabajo en equipo:**
@@ -121,4 +121,4 @@
 -Al principio del proyecto nuestro equipo estaba conformado por 5 integrantes. Pero uno de ellos nos expreso que no podía seguir trabajando a este ritmo, por lo cual abandonaría el curso, quedando nuestro equipo conformado de 4 integrantes.:pensive:
 -Nuestro compañero Abraham tenía unas cosas que nunca pudo subir, ya que se atraso y el sistema no le permitía subir cosas porque tenía que actualizar en varias ocaciones.
 -Nuestra compañera Silvia tuvo varios problemas al interactuar con la base de datos y con la carpeta Dynamics, ya que tenía un error extraño que decía que el acceso estaba denegado.
--Cuando creíamos que por fin ya íbamos a terminar el proyecto, nos dimos cuenta de que nos equivocamos, y no era cifrar($nombre), sino que era cifrar($id). Intentamos cambiarlo, pero al intentarlo, el proyecto dejaba de funcionar, y decidimos dejarlo así.:cry:
+-Cuando creíamos que por fin ya íbamos a terminar el proyecto, nos dimos cuenta de que nos equivocamos, y no era cifrar($nombre), sino que era cifrar($id). Intentamos cambiarlo, pero al intentarlo, el proyecto dejaba de funcionar, y decidimos dejarlo así, ya que preferimos que funcionara a que dejara de funcionar.:cry:
