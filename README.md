@@ -1,6 +1,6 @@
 # Proyecto-1
 <<<<<<< HEAD
--NOMBRE DEL PROYECTO: "Proyecto de administración de cafetería."
+-NOMBRE DEL PROYECTO: "Proyecto de administración de cafetería." :coffee:
 
 -NOMBRE DEL EQUIPO: "Axoyotes"
 
@@ -109,14 +109,14 @@
       -**ControlDeUsuario.php:** si hay un usuario muestra la información del usuario; si no hay usuario muestra que no hay usuario que coincida con el nombre. Tiene un botón de modificador de datos, que conecta con modificación.php. También tiene un botón de eliminar datos, el cual conecta con eliminacion.php.
 
 
-## COMENTARIOS ADICIONALES:
+## COMENTARIOS ADICIONALES: :pencil2:
 **Dificultades en dispositivos MAC:**
 -Debido a las diferencias entre la instalacion, al momento de cifrar los datos o de generar las contraseñas, puede que no se genere una codificación base64 suficientemente larga como para que pueda ser detectada al momento de descifrarse.
 **Trabajo en equipo:**
-**Ventajas:**
+**Ventajas:**:+1:
 -Afortunadamente nuestro equipo siempre logro mantener una buena comunicación entre todos los integrantes, lo cual fue esencial para que todos los integrantes pudieramos comprender el funcionamiente de este programa.
 -Nuestro compañero Abraham siempre tenía los programas actualizados y ayudaba a todos los demás a entender lo que sucedía con su programa, permitiendo un avance rápido y eficaz al equipo.
-**Desventajas:**
--Al principio del proyecto nuestro equipo estaba conformado por 5 integrantes. Pero uno de ellos nos expreso que no podía seguir trabajando a este ritmo, por lo cual abandonaría el curso, quedando nuestro equipo conformado de 4 integrantes.
+**Desventajas:**:thumbsdown:
+-Al principio del proyecto nuestro equipo estaba conformado por 5 integrantes. Pero uno de ellos nos expreso que no podía seguir trabajando a este ritmo, por lo cual abandonaría el curso, quedando nuestro equipo conformado de 4 integrantes.:pensive:
 -Nuestro compañero Abraham tenía unas cosas que nunca pudo subir, ya que se atraso y el sistema no le permitía subir cosas porque tenía que actualizar en varias ocaciones.
 -Nuestra compañera Silvia tuvo varios problemas al interactuar con la base de datos y con la carpeta Dynamics, ya que tenía un error extraño que decía que el acceso estaba denegado.
