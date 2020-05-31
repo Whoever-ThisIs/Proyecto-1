@@ -110,3 +110,5 @@
 
 
 ## COMENTARIOS ADICIONALES:
+El programa tiene algunas dificultades para funcionar en dispositivos MAC:
+Debido a las diferencias entre la instalacion, al momento de cifrar los datos o de generar las contraseñas, puede que no se genere una codificación base64 suficientemente larga como para que pueda ser detectada al momento de descifrarse.
