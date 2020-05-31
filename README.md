@@ -10,14 +10,14 @@
     4.- Pavón Álvarez Lenin.
 
 -GUÍA DE INSTALACIÓN EL PROYECTO:
-    1.- Instalar ATOM,  lo puedes instalar dando click en el siguiente link https://atom.io/
-    2.- Instalar XAMPP, lo puedes obtener en la siguiente liga https://www.apachefriends.org/es/index.html
-    3.- Una vez instalado XAMPP, asegurate de encender el servidor MySQL en tu panel de control XAMPP, dando clik en Start (deberas esperar hasta que esté de color verde).
-    4.- Si no posee una cuenta en git, registrarse.
+    1.- Instalar ATOM,  lo puedes instalar dando click en el siguiente enlace https://atom.io/
+    2.- Instalar XAMPP, lo puedes obtener en el siguiente enlace https://www.apachefriends.org/es/index.html
+    3.- Una vez instalado XAMPP, asegurate de encender el servidor MySQL desde tu panel de control XAMPP, dando clik en Start (deberas esperar hasta que esté de color verde).
+    4.- Si no posee una cuenta en github, registrarse.
     5.- Buscar el repositorio con el nombre de Proyecto-1.
-    6.- Copiar el link del repositorio.
+    6.- Copiar el repositorio.
     7.- Entrar a la consola de la computadora (Windows + R).
-    8.- Colocar cmd.
+    8.- Dentro de la ventana que manda la consola, colocar cmd.
     9.- En la consola, si se esta dentro de C:, escribir el comando: cd/xampp/mysql/mysql/bin
     10.- Una vez dentro de la carpeta bin, escribir el siguiente comando: mysql -u root
     11.- Pegar el link del repositorio utilzando: git clone <pegar el link del repositorio>
