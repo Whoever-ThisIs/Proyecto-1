@@ -1,12 +1,12 @@
 <?php
   include("../../SitioUsr/Dynamics/des-cifrado.php");
   if (isset($_POST['nombre']) && isset($_POST['paterno']) && isset($_POST['colegio']) && isset($_POST['RFC']) && isset($_POST['id'])) {
-    $nombre = cifrar($_POST['nombre']);
-    $paterno = $_POST['Paterno'];
-    $paterno = cifrar($paterno);
+    $nombre = cifrar(escapeall($_POST['nombre']));
+    $paterno = escapeall($_POST['Paterno']);
+    $paterno = cifrar(escapeall($paterno));
     $colegio = $_POST['colegio'];
-    $RFC = $_POST['RFC'];
-    $id = $_POST['id'];
+    $RFC = escapeall($_POST['RFC']);
+    $id = escapeall($_POST['id']);
     $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
     if($id == $RFC)
     {

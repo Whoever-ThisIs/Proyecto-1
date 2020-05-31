@@ -1,8 +1,9 @@
 <?php
+  include("../../SitioUsr/Dynamics/des-cifrado.php");
   $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
   if (isset($_POST['filtro']))
   {
-    $filtro = $_POST['filtro'];
+    $filtro = escapeall($_POST['filtro']);
     $count = "SELECT COUNT(*) FROM alimentos WHERE nombre LIKE \"%$filtro%\"";
     $consulta = "SELECT * FROM alimentos WHERE nombre LIKE \"%$filtro%\"";
   }

@@ -1,11 +1,11 @@
 <?php
   include("../../SitioUsr/Dynamics/des-cifrado.php");
   if (isset($_POST['nombre']) && isset($_POST['Paterno']) && isset($_POST['grupo']) && isset($_POST['Ncuenta']) && isset($_POST['id'])) {
-    $nombre = cifrar($_POST['nombre']);
-    $paterno = cifrar($_POST['Paterno']);
+    $nombre = cifrar(escapeall($_POST['nombre']));
+    $paterno = cifrar(escapeall($_POST['Paterno']));
     $grupo = $_POST['grupo'];
-    $Nc = $_POST['Ncuenta'];
-    $id = $_POST['id'];
+    $Nc = escapeall($_POST['Ncuenta']);
+    $id = escapeall($_POST['id']);
     $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
     if ($Nc == $id)
     {

@@ -1,9 +1,9 @@
 <?php
   if ($_POST['id'] && $_POST['nombre'] && $_POST['precio']) {
-    $id = $_POST['id'];
-    $nombre = $_POST['nombre'];
-    $precio = $_POST['precio'];
-    $cantidad = $_POST['cantidad'];
+    $id = escapeall($_POST['id']);
+    $nombre = escapeall($_POST['nombre']);
+    $precio = escapeall($_POST['precio']);
+    $cantidad = escapeall($_POST['cantidad']);
     if ($precio >= 1)
     {
       $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");

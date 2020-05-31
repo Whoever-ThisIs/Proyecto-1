@@ -13,9 +13,9 @@
     exit();
   }
   $idadmin=$_SESSION['admin'];
-  $llaveseg=$_POST['llave'];
+  $llaveseg=escapeall($_POST['llave']);
   $accion=$_POST['accion'];
-  $id0=$_POST['id'];
+  $id0=escapeall($_POST['id']);
   $tipo=$_POST['tipo'];
   $sqlp = "SELECT condimento FROM administradores WHERE id_admin='$idadmin'";
   $consulta_sqlp = mysqli_query($conexion, $sqlp);
@@ -26,9 +26,9 @@
   $true=acceso($llaveseg,$password[0],$salt[0]);
   if ($true==1) {
     if ($accion=="agregar") {
-      $nomusr0=$_POST['usuarioagr'];
+      $nomusr0=escapeall($_POST['usuarioagr']);
       $nomusr=cifrar($nomusr0);
-      $paso=$_POST['paso'];
+      $paso=escapeall($_POST['paso']);
       $salt2=salt();
       $contra=registro($paso,$salt2);
       if ($tipo=="Mensajero") {

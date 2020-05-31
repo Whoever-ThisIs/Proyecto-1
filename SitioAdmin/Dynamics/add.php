@@ -1,11 +1,12 @@
 <?php
+  include("../../SitioUsr/Dynamics/des-cifrado.php");
   if(isset($_POST['nombre']) && isset($_POST['precio']) )
   {
     if ($_POST['precio'] >= 1 && $_POST['cantidad'] >= 1)
     {
       $precio = $_POST['precio'];
       $cantidad = $_POST['cantidad'];
-      $nombre = $_POST['nombre'];
+      $nombre = escapeall($_POST['nombre']);
       $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
       $consulta = "SELECT id_alimento FROM alimentos WHERE nombre = '" . $nombre . "'";
       $respuesta = mysqli_query($conexion,$consulta);

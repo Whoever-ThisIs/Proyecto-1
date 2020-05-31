@@ -13,22 +13,22 @@
   }
 
   $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
-  $usu=$_POST['tipo_usuario'];
-  $nombre=$_POST['nombre'];
-  $nombre=cifrar($nombre);
-  $apellido=$_POST['ApellidoPat'];
-  $apellido=cifrar($apellido);
+  $usu=escapeall($_POST['tipo_usuario']);
+  $nombre=escapeall($_POST['nombre']);
+  $nombre=cifrar(escapeall($nombre));
+  $apellido=escapeall($_POST['ApellidoPat']);
+  $apellido=escapeall(cifrar($apellido));
   $pass=$_POST['password'];
   //Hasheo y cifrado de contraseña
   $salt=salt();
   $contra=registro($pass,$salt);
 
   if ($usu=="Alumno") {
-    $nCuenta=$_POST['Ncuenta'];
+    $nCuenta=escapeall($_POST['Ncuenta']);
     $id="A".$nCuenta;
     $valido=revisar($id,$conexion);
     if ($valido==1) {
-      $grupo=$_POST['Grupo'];
+      $grupo=escapeall($_POST['Grupo']);
       $consulta="INSERT INTO alumnos(Ncuenta, Nombre, ApellidoPat, Grupo) VALUES ($nCuenta,'$nombre','$apellido',$grupo)";
       mysqli_query($conexion, $consulta);
       $consulta2="INSERT INTO usuarios(id_usuario, password, condimento) VALUES ('$id','$contra','$salt')";
@@ -41,7 +41,7 @@
   }
 
   elseif ($usu=="Funcionario") {
-    $RFC=$_POST['RFC'];
+    $RFC=escapeall($_POST['RFC']);
     $id="F".$RFC;
     $valido=revisar($id,$conexion);
     if ($valido==1) {
@@ -58,7 +58,7 @@
   }
 
   elseif ($usu=="Profesor") {
-    $RFC=$_POST['RFC'];
+    $RFC=escapeall($_POST['RFC']);
     $id="P".$RFC;
     $valido=revisar($id,$conexion);
     if ($valido==1) {
@@ -74,7 +74,7 @@
     }
   }
   elseif ($usu=="Trabajador") {
-    $nTrabajador=$_POST['Ntrabajador'];
+    $nTrabajador=escapeall($_POST['Ntrabajador']);
     $id="T".$nTrabajador;
     $valido=revisar($id,$conexion);
     if ($valido==1) {

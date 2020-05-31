@@ -20,10 +20,9 @@
           <title>Menú</title>
         </head>
         <body>
-          <table></table>
     ";
-    $password = (isset($_POST['password']) && $_POST['password'] != "") ? $_POST['password'] : false ;
-    $usr = (isset($_POST['id']) && $_POST['id'] != "") ? $_POST['id'] : false ;
+    $password = (isset($_POST['password']) && $_POST['password'] != "") ? escapeall($_POST['password']) : false ;
+    $usr = (isset($_POST['id']) && $_POST['id'] != "") ? escapeall($_POST['id']) : false ;
     if ($usr!==false&&$password!==false) {
       if (preg_match('/^AD/',$usr)) {
         $SQL_usuario = "SELECT id_admin FROM administradores WHERE id_admin='$usr'";

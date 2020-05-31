@@ -1,8 +1,9 @@
 <?php
-  $pedido=$_POST['pedido'];
-  $usr=$_POST['usr'];
-  $razon=$_POST['razon'];
-  $comentarios = (isset($_POST['comentario']) && $_POST['comentario'] != "") ? $_POST['comentario'] : false ;
+  include("../../SitioUsr/Dynamics/des-cifrado.php");
+  $pedido=escapeall($_POST['pedido']);
+  $usr=escapeall($_POST['usr']);
+  $razon=escapeall($_POST['razon']);
+  $comentarios = (isset($_POST['comentario']) && $_POST['comentario'] != "") ? escapeall($_POST['comentario']) : false ;
   include("bd.php");
   $_SESSION['mensajero']="Juan";
   $conexion = connectDB2("cafeteria");
