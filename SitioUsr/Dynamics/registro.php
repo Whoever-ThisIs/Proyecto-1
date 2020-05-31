@@ -15,9 +15,9 @@
   $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
   $usu=escapeall($_POST['tipo_usuario']);
   $nombre=escapeall($_POST['nombre']);
-  $nombre=cifrar(escapeall($nombre));
+  $nombre=cifrar($nombre);
   $apellido=escapeall($_POST['ApellidoPat']);
-  $apellido=escapeall(cifrar($apellido));
+  $apellido=cifrar($apellido);
   $pass=$_POST['password'];
   //Hasheo y cifrado de contraseña
   $salt=salt();
