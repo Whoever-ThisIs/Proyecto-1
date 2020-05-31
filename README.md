@@ -56,7 +56,7 @@
     12. Escribe el comando 'SOURCE cafeteria.sql'
     11. Inicia sesion en la pagina 'InicioDeSesion.html' con el usuario 'AD1' y la contraseña 'Juan'.
     12. Agrega a los administradores y mensajeros que quieras.
-    13. Listo! ya puedes usar el administrador de cafeteria, tus usuarios se podran registrar y ordenar pedidos.
+    13. ¡Listo! ya puedes usar el administrador de cafeteria, tus usuarios se podran registrar y ordenar pedidos.
 '
 
 
@@ -68,13 +68,13 @@
     Son los encargados de agregar, modificar o eliminar los productos de la cafetería, pueden regular la cantidad de usuarios y la modificación de su información.
 
     ### 2. MENSAJEROS:
-     Son los encargados de verificar las órdenes y de hacer la entrega de los pedidos. Ellos pueden finalizar la entrega con éxito, o en el caso que el cliente no liquide, tenga un retraso o no recoja su pedido, el supervisor es capaz de aplicar una sanción (el cliente no podrá ordenar comida durante 5 días hábiles).
+     Son los encargados de verificar las órdenes y de hacer la entrega de los pedidos. Ellos pueden finalizar la entrega con éxito, o en el caso de que el cliente no liquide, tenga un retraso o no recoja su pedido, el supervisor es capaz de aplicar una sanción (el cliente no podrá ordenar comida durante 5 días hábiles).
 
     #3. CLIENTE: tenemos 4 categorias distintas, las cuales son:
     +Profesor: Su cuenta contiene su nombre, grupo y usuario (No. cuenta).
-    +Funcionario: su cuenta contara con nombre, colegio y un usuario, el cual será su RFC
-    +Trabajador: su cuenta contara con nombre, colegio y un usuario, el cual será su RFC.
-    +Estudiante: el usuario será el número del trabajador y tambien se almacenara su nombre.
+    +Funcionario: su cuenta contará con nombre, colegio y un usuario, el cual será su RFC
+    +Trabajador: su cuenta contará con nombre, colegio y un usuario, el cual será su RFC.
+    +Estudiante: el usuario será el número del trabajador y también se almacenará su nombre.
 
     Utilizamos HTML como maquetado. Los archivos de este tipo se encuentran dentro de la carpeta Templates, que es en donde se encuentran todos los maquetados del Sitio Accesible por el usuario:
     -**Registro.html:** se conecta con Alumnos.php, Profesor.php, Funcionario.php y Trabajador.html; para enviar el tipo de usuario.
@@ -106,7 +106,7 @@
       Si el usuario ya habia pedido alimentos, se valida si la cantidad ingresada es correcta, actualiza el menú, actualiza el pedido y el envio del lugar. Actualiza la entrega, envio del id_pedido, id_alimento, envio de la cantidad, consulta SQL  de los alimentos, precio y actualización de costo en pedidos.
       -**Cancelacion.php:** actualiza el estatus del pedido a cancelado, se realiza una inserción a cancelación con el id_pedido.
       -**Limite.php:** actualiza SQL del gestor de base de datos.
-      -**ControlDeUsuario.php:** si hay un usuario muestra la información del usuario; si no hay usuario muestra que no hay usuario que coincida con el nombre. Tiene un botón de modificador de datos, conecta con modificación.php. También tiene un botón de eliminar datos, conecta con eliminacion.php.
+      -**ControlDeUsuario.php:** si hay un usuario muestra la información del usuario; si no hay usuario muestra que no hay usuario que coincida con el nombre. Tiene un botón de modificador de datos, que conecta con modificación.php. También tiene un botón de eliminar datos, el cual conecta con eliminacion.php.
 
 
 ## COMENTARIOS ADICIONALES:
