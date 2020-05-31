@@ -107,6 +107,7 @@
       -**Cancelacion.php:** actualiza el estatus del pedido a cancelado, se realiza una inserción a cancelación con el id_pedido.
       -**Limite.php:** actualiza SQL del gestor de base de datos.
       -**ControlDeUsuario.php:** si hay un usuario muestra la información del usuario; si no hay usuario muestra que no hay usuario que coincida con el nombre. Tiene un botón de modificador de datos, que conecta con modificación.php. También tiene un botón de eliminar datos, el cual conecta con eliminacion.php.
+      -**Admin.php:** establece una cuenta de administrador usuarios: AD1, contraseña: CoddPHP<3
 
 
 ## COMENTARIOS ADICIONALES: :pencil2:
