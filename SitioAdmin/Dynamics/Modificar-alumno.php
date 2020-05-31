@@ -1,4 +1,5 @@
 <?php
+  include("../../SitioUsr/Dynamics/des-cifrado.php");
   if (isset($_POST['id'])) {
     $Nc = $_POST['id'];
     $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
@@ -6,7 +7,6 @@
     $alumno = mysqli_query($conexion,$alumno);
     $alumno = mysqli_fetch_array($alumno);
     $grupo = "SELECT * FROM grupos WHERE id_grupo <> " . $alumno['id_grupo'];
-    echo "$grupo";
     $grupo = mysqli_query($conexion,$grupo);
     echo "<!DOCTYPE html>
             <html lang='es' dir='ltr'>
@@ -21,10 +21,10 @@
                     <form method='POST' action='./Mod-alumno.php'>
                       <input type='hidden' name='id' value='" . $Nc . "'>
                       <p>Nombre:</p>
-                      <input type='text' name='nombre' value='" . $alumno['Nombre'] . "' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required>
+                      <input type='text' name='nombre' value='" . descifrar($alumno['Nombre']) . "' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required>
                       <br>
                       <p>Apelido Paterno:</p>
-                      <input type='text' name='Paterno' value='" . $alumno['ApellidoPat'] . "' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required>
+                      <input type='text' name='Paterno' value='" . descifrar($alumno['ApellidoPat']) . "' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required>
                       <p>Grupo:</p>
                       <select name='grupo' required>
                         <option value='" . $alumno['id_grupo'] ."'> " . $alumno['grupo'] ." </option>";

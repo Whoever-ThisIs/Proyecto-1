@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Agregar usuarios</title>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <form class="" action="../Dynamics/agregar-eliminar.php" method="post">
+            <fieldset>
+              <legend><h1>Agregar nuevo usuario</h1></legend>
+              <input type="radio" name="tipo" value="Mensajero" required>Mensajero<br />
+              <input type="radio" name="tipo" value="Administrador" required>Administrador<br />
+              Nombre de usuario: <input type="text" name="usuarioagr" required><br>
+              ID de usuario: AD/M<input type="number" name="id" required><br>
+              Contraseña del usuario: <input type="password" name="paso" placeholder="Mínimo 8 carácteres" title='La contraseña debe de contener más de 8 carácteres, al menos una mayuscula, una minúscula, un signo de puntuación y un número' pattern='^(?=\P{Ll}*\p{Ll})(?=\P{Lu}*\p{Lu})(?=\P{N}*\p{N})(?=[\p{L}\p{N}]*[^\p{L}\p{N}])[\s\S]{8,}$' required><br>
+              Llave de seguridad: <input type="password" name="llave" placeholder="Mínimo 8 carácteres" required><br>
+              <input type="hidden" name="accion" value="agregar">
+              <input type="submit" value="Añadir">
+            </fieldset>
+          </form>
+        </td>
+        <td>
+          <form class="" action="../Dynamics/agregar-eliminar.php" method="post">
+            <fieldset>
+              <legend><h1>Eliminar usuario</h1></legend>
+              <input type="radio" name="tipo" value="Mensajero" required>Mensajero<br />
+              <input type="radio" name="tipo" value="Administrador" required>Administrador<br />
+              ID de usuario a eliminar: AD/M<input type="number" name="id" required><br>
+              Llave de seguridad: <input type="password" name="llave" placeholder="Mínimo 8 carácteres" required><br>
+              <input type="hidden" name="accion" value="eliminar">
+              <input type="submit" value="Añadir">
+            </fieldset>
+          </form>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

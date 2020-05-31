@@ -1,4 +1,5 @@
 <?php
+  include("../../SitioUsr/Dynamics/des-cifrado.php");
   if (isset($_POST['id'])) {
     $Nc = $_POST['id'];
     $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
@@ -18,10 +19,10 @@
                     <form method='POST' action='./Mod-trabajador.php'>
                       <input type='hidden' name='id' value='" . $Nc . "'>
                       <p>Nombre:</p>
-                      <input type='text' name='nombre' value='" . $trabajador['Nombre'] . "' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required>
+                      <input type='text' name='nombre' value='" . descifrar($trabajador['Nombre']) . "' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required>
                       <br>
                       <p>Apelido Paterno:</p>
-                      <input type='text' name='Paterno' value='" . $trabajador['ApellidoPat'] . "' required pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas'>
+                      <input type='text' name='Paterno' value='" . descifrar($trabajador['ApellidoPat']) . "' required pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas'>
                       <p> Numero de cuenta</p>
                       <input type='number' name='NTrabajador' value='" . $trabajador['NTrabajador'] ."' pattern='^\d{9}' required>
                       <br>

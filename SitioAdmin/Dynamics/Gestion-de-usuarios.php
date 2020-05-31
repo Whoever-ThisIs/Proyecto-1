@@ -1,8 +1,5 @@
 <?php
-// session_name();
-// session_id();
-// session_start();
-// if (isset($_SESSION[''])) {
+  include("../../SitioUsr/Dynamics/des-cifrado.php");
   function sancion($prefijo, $usr, $conexion){
     $usuario=$prefijo.$usr;
     $SQL_busqueda_sancion = "SELECT id_usuario FROM lista_negra WHERE id_usuario = '$usuario'";
@@ -48,8 +45,8 @@
   {
     $sancion=sancion("A", $alumno['Ncuenta'], $conexion);
       echo "<tr>
-              <td> " . $alumno['Nombre'] ." </td>
-              <td> " . $alumno['ApellidoPat'] ." </td>
+              <td> " . descifrar($alumno['Nombre']) ." </td>
+              <td> " . descifrar($alumno['ApellidoPat']) ." </td>
               <td> " . $alumno['Ncuenta'] ." </td>
               <td> " . $alumno['grupo'] ." </td>
               <td> $sancion </td>
@@ -92,9 +89,11 @@
             </tr>";
   while ($profesor = mysqli_fetch_array($respuesta_profesor,MYSQLI_ASSOC)) {
     $sancion=sancion("P", $profesor['RFC'], $conexion);
+    echo $profesor['ApellidoPat'];
+    echo descifrar("YAGL2fdksQ+n0jH+LL1j6g==");
       echo "<tr>
-              <td> " . $profesor['Nombre'] . " </td>
-              <td> " . $profesor['ApellidoPat'] . " </td>
+              <td> " . descifrar($profesor['Nombre']) . " </td>
+              <td> " . descifrar($profesor['ApellidoPat']) . " </td>
               <td> " . $profesor['RFC'] . " </td>
               <td> " . $profesor['Colegio'] . " </td>
               <td> $sancion</td>
@@ -138,8 +137,8 @@
   while ($funcionario = mysqli_fetch_array($respuesta_funcionario,MYSQLI_ASSOC)) {
     $sancion=sancion("F", $funcionario['RFC'], $conexion);
       echo "<tr>
-              <td> " . $funcionario['Nombre'] . " </td>
-              <td> " . $funcionario['ApellidoPat'] . " </td>
+              <td> " . descifrar($funcionario['Nombre']) . " </td>
+              <td> " . descifrar($funcionario['ApellidoPat']) . " </td>
               <td> " . $funcionario['RFC'] . " </td>
               <td> " . $funcionario['Colegio'] . " </td>
               <td> $sancion</td>
@@ -184,8 +183,8 @@
   while ($trabajador = mysqli_fetch_array($respuesta_trabajador,MYSQLI_ASSOC)) {
     $sancion=sancion("T", $trabajador['NTrabajador'], $conexion);
       echo "<tr>
-              <td> " . $trabajador['Nombre'] . " </td>
-              <td> " . $trabajador['ApellidoPat'] . " </td>
+              <td> " . descifrar($trabajador['Nombre']) . " </td>
+              <td> " . descifrar($trabajador['ApellidoPat']) . " </td>
               <td> " . $trabajador['NTrabajador'] . " </td>
               <td> $sancion </td>
               <form method='POST' action='./modificar-trabajador.php'>
@@ -220,5 +219,4 @@
     <button onclick=\"location.href='Panel-Control.php'\">Volver al panel de control</button>
   </html>";
   mysqli_close($conexion);
-// }
 ?>

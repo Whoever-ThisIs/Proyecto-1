@@ -1,5 +1,6 @@
 <?php
-  $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
+  include("./bd.php");
+  $conexion = connectDB2("cafeteria");
   $consulta = "SELECT * FROM grupos";
   $respuesta = mysqli_query($conexion,$consulta);
   $group = mysqli_fetch_array($respuesta,MYSQLI_ASSOC);
@@ -29,10 +30,10 @@
                   Grupo:
                   <br>
                   <select name='Grupo' required>";
-  echo            "<option value='" . $group['id_grupo'] . "'>". $group['grupo'] ."</option>";
+  echo             "<option value='" . $group['id_grupo'] . "'>". $group['grupo'] ."</option>";
   while ($group = mysqli_fetch_array($respuesta))
-    echo            "<option value='" . $group['id_grupo'] . "'>". $group['grupo'] ."</option>";
-  echo            "</select>
+    echo           "<option value='" . $group['id_grupo'] . "'>". $group['grupo'] ."</option>";
+  echo           "</select>
                   <br>
                   Contraseña:
                   <br>

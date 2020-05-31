@@ -1,9 +1,4 @@
 <?php
-  // session_name("cafeteria");
-  // session_id("319014215");
-  // session_start();
-  // if (isset($_SESSION['']))
-  // {
   $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
   if (isset($_POST['filtro']))
   {
@@ -14,7 +9,7 @@
   else
   {
     $count = "SELECT COUNT(*) FROM alimentos ";
-    $consulta = "SELECT* FROM alimentos ";
+    $consulta = "SELECT * FROM alimentos ";
   }
   $respuesta = mysqli_query($conexion,$consulta);
   $count = mysqli_query($conexion,$count);

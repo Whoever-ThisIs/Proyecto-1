@@ -8,7 +8,7 @@
           <html lang='es' dir='ltr'>
             <head>
               <meta charset='utf-8'>
-              <title>REGISTRO DE FUNCIONARIO</title>
+              <title>REGISTRO DE PROFESOR</title>
             </head>
             <body>
               <form method='POST' action='registro.php'>
@@ -17,7 +17,7 @@
                   Nombre:
                   <br>
                   <input type='text' name='nombre' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required placeholder='&#128100; Nombre'>
-                  <input type='hidden' name='tipo_usuario' value='Funcionario'>
+                  <input type='hidden' name='tipo_usuario' value='Profesor'>
                   <br>
                   Apellido paterno:
                   <br>
@@ -30,10 +30,10 @@
                   Colegio:
                   <br>
                   <select name='Colegio'>";
-  echo             "<option value='" . $colegio['id_colegio'] . "'>". $colegio['Colegio'] ."</option>";
+  echo            "<option value='" . $colegio['id_colegio'] . "'>". $colegio['Colegio'] ."</option>";
   while ($colegio = mysqli_fetch_array($respuesta))
-    echo           "<option value='" . $colegio['id_colegio'] . "'>". $colegio['Colegio'] ."</option>";
-  echo           "</select>
+    echo            "<option value='" . $colegio['id_colegio'] . "'>". $colegio['Colegio'] ."</option>";
+  echo            "</select>
                   <br>
                   Contraseña:
                   <br>

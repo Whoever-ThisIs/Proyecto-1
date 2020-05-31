@@ -1,12 +1,13 @@
 <?php
+  include("../../SitioUsr/Dynamics/des-cifrado.php");
   if (isset($_POST['nombre']) && isset($_POST['paterno']) && isset($_POST['colegio']) && isset($_POST['RFC']) && isset($_POST['id'])) {
-    $nombre = $_POST['nombre'];
-    $paterno = $_POST['paterno'];
+    $nombre = cifrar($_POST['nombre']);
+    $paterno = $_POST['Paterno'];
+    $paterno = cifrar($paterno);
     $colegio = $_POST['colegio'];
     $RFC = $_POST['RFC'];
     $id = $_POST['id'];
     $conexion = mysqli_connect("localhost", "root", "root", "cafeteria");
-    echo $id;
     if($id == $RFC)
     {
       $update_nombre = "UPDATE profesores SET Nombre = \"$nombre\" WHERE RFC = \"$id\"";
@@ -36,6 +37,7 @@
         mysqli_query($conexion,$update_rfc);
         mysqli_query($conexion,$update_rfc_users);
         mysqli_close($conexion);
+        echo "uwu";
         header('location: ./Gestion-de-usuarios.php');
       }
       else

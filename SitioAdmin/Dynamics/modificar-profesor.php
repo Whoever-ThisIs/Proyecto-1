@@ -1,4 +1,5 @@
 <?php
+  include("../../SitioUsr/Dynamics/des-cifrado.php");
   if (isset($_POST['id']))
   {
     $id = $_POST['id'];
@@ -6,6 +7,11 @@
     $profesor = "SELECT * FROM profesores NATURAL JOIN colegios WHERE RFC = \"$id\"";
     $profesor = mysqli_query($conexion,$profesor);
     $profesor = mysqli_fetch_array($profesor);
+    $awa = $profesor['ApellidoPat'];
+    $ewe = $profesor['Nombre'];
+    $uwu=descifrar($awa);
+    $unu=descifrar($ewe);
+    echo "$awa<br>$ewe";
     $colegio = "SELECT * FROM colegios WHERE id_colegio <> " . $profesor['id_colegio'];
     $colegio = mysqli_query($conexion,$colegio);
     echo "<!DOCTYPE html>
@@ -21,9 +27,9 @@
                     <form method='POST' action='Mod-profesor.php'>
                       <input type='hidden' name='id' value='" . $profesor['RFC'] . "'>
                       <p>Nombre</p>
-                      <input type='text' name='nombre' value='" . $profesor['Nombre'] . "' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required>
+                      <input type='text' name='nombre' value='" . descifrar($profesor['Nombre']) . "' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required>
                       <p> Apelido Paterno </p>
-                      <input type='text' name='paterno' value='" . $profesor['ApellidoPat'] . "' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required>
+                      <input type='text' name='paterno' value='" . descifrar($profesor['ApellidoPat']) . "' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas' required>
                       <p> Colegio </p>
                       <select name='colegio'>
                         <option value='" . $profesor['id_colegio'] . "'>" . $profesor['Colegio'] . " </option>";

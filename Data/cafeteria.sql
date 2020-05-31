@@ -23,9 +23,10 @@ DROP TABLE IF EXISTS `administradores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `administradores` (
-  `id_admin` tinyint(3) NOT NULL AUTO_INCREMENT,
+  `id_admin` varchar(5) NOT NULL,
   `Password` text NOT NULL,
-  `nombre` varchar(20) NOT NULL,
+  `nombre` text NOT NULL,
+  `condimento` text NOT NULL,
   PRIMARY KEY (`id_admin`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -36,6 +37,7 @@ CREATE TABLE `administradores` (
 
 LOCK TABLES `administradores` WRITE;
 /*!40000 ALTER TABLE `administradores` DISABLE KEYS */;
+INSERT INTO `administradores` VALUES ('AD1','jfAX6APf4PN5LbGELdJHgf9aUorA8SfVc4XFx1eRxBIW8e9L4zSC4QlMbRwAG/9ma3cwByEfAKKstfsQNKE0iVQa0O222/OQUK1ruE4egjI=','Juan','Dr$E?M!WIKd/#ue');
 /*!40000 ALTER TABLE `administradores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51,7 +53,7 @@ CREATE TABLE `alimentos` (
   `nombre` varchar(15) NOT NULL,
   `precio` float(5,2) NOT NULL,
   PRIMARY KEY (`id_alimento`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,7 +62,7 @@ CREATE TABLE `alimentos` (
 
 LOCK TABLES `alimentos` WRITE;
 /*!40000 ALTER TABLE `alimentos` DISABLE KEYS */;
-INSERT INTO `alimentos` VALUES (1,'Agua sabor vaso',13.50),(2,'Yakult',12.00),(3,'Galletas Oreo',12.00),(4,'Chimichangas',50.00);
+INSERT INTO `alimentos` VALUES (1,'Agua sabor vaso',35.00),(2,'Yakult',12.00),(3,'Galletas Oreo',12.00),(4,'Chimichangas',49.70);
 /*!40000 ALTER TABLE `alimentos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -73,8 +75,8 @@ DROP TABLE IF EXISTS `alumnos`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `alumnos` (
   `Ncuenta` int(32) NOT NULL,
-  `Nombre` varchar(20) NOT NULL,
-  `ApellidoPat` varchar(15) NOT NULL,
+  `Nombre` text NOT NULL,
+  `ApellidoPat` text NOT NULL,
   `Grupo` tinyint(4) NOT NULL,
   PRIMARY KEY (`Ncuenta`),
   KEY `Grupo` (`Grupo`),
@@ -88,7 +90,6 @@ CREATE TABLE `alumnos` (
 
 LOCK TABLES `alumnos` WRITE;
 /*!40000 ALTER TABLE `alumnos` DISABLE KEYS */;
-INSERT INTO `alumnos` VALUES (123456777,'Guernica','Pavón',1),(123456788,'Uwu','Uwu',1),(123456789,'Lenin','Pavón',1),(319014216,'Lenin','Pavón',1),(319014217,'Lenin','Pavón',1);
 /*!40000 ALTER TABLE `alumnos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -108,7 +109,7 @@ CREATE TABLE `asignaciones` (
   KEY `id_pedido` (`id_pedido`),
   CONSTRAINT `asignaciones_ibfk_1` FOREIGN KEY (`id_mensajero`) REFERENCES `mensajeros` (`id_mensajero`),
   CONSTRAINT `asignaciones_ibfk_2` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`)
-) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -117,7 +118,7 @@ CREATE TABLE `asignaciones` (
 
 LOCK TABLES `asignaciones` WRITE;
 /*!40000 ALTER TABLE `asignaciones` DISABLE KEYS */;
-INSERT INTO `asignaciones` VALUES (103,1,48),(104,2,49),(105,1,50),(106,2,51),(107,1,52),(108,2,53),(109,1,54);
+INSERT INTO `asignaciones` VALUES (103,1,48),(104,2,49),(105,1,50),(106,2,51),(107,1,52),(108,2,53),(109,1,54),(110,2,55),(111,1,56),(112,2,57);
 /*!40000 ALTER TABLE `asignaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -142,7 +143,7 @@ CREATE TABLE `cancelaciones` (
   CONSTRAINT `cancelaciones_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
   CONSTRAINT `id_razon` FOREIGN KEY (`id_razon`) REFERENCES `razones` (`id_razon`),
   CONSTRAINT `pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,7 +152,7 @@ CREATE TABLE `cancelaciones` (
 
 LOCK TABLES `cancelaciones` WRITE;
 /*!40000 ALTER TABLE `cancelaciones` DISABLE KEYS */;
-INSERT INTO `cancelaciones` VALUES (2,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:20:46'),(3,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:21:47'),(4,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:21:58'),(5,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:22:48'),(6,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:28:14'),(7,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:32:14'),(8,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:34:07'),(9,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:34:51'),(10,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:37:30'),(11,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:40:08'),(12,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:44:29'),(13,48,'A319014217',1,NULL,'2020-05-29 23:47:13'),(14,48,'A319014217',1,NULL,'2020-05-29 23:47:51'),(15,48,'A319014217',1,NULL,'2020-05-29 23:56:12'),(16,54,'A319014217',1,NULL,'2020-05-30 00:06:56');
+INSERT INTO `cancelaciones` VALUES (2,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:20:46'),(3,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:21:47'),(4,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:21:58'),(5,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:22:48'),(6,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:28:14'),(7,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:32:14'),(8,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:34:07'),(9,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:34:51'),(10,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:37:30'),(11,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:40:08'),(12,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:44:29'),(13,48,'A319014217',1,NULL,'2020-05-29 23:47:13'),(14,48,'A319014217',1,NULL,'2020-05-29 23:47:51'),(15,48,'A319014217',1,NULL,'2020-05-29 23:56:12'),(16,54,'A319014217',1,NULL,'2020-05-30 00:06:56'),(17,51,'A319014217',2,NULL,'2020-05-30 21:12:11'),(18,55,'A319014217',1,NULL,'2020-05-30 21:13:49');
 /*!40000 ALTER TABLE `cancelaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,7 +197,7 @@ CREATE TABLE `entregas` (
   KEY `id_menu` (`id_menu`),
   CONSTRAINT `entregas_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedidos` (`id_pedido`),
   CONSTRAINT `entregas_ibfk_2` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id_menu`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -205,7 +206,7 @@ CREATE TABLE `entregas` (
 
 LOCK TABLES `entregas` WRITE;
 /*!40000 ALTER TABLE `entregas` DISABLE KEYS */;
-INSERT INTO `entregas` VALUES (42,48,1,2),(43,49,1,1),(44,50,1,6),(45,50,2,2),(46,51,3,3),(47,52,1,1),(48,53,1,1),(49,54,1,1);
+INSERT INTO `entregas` VALUES (42,48,1,2),(43,49,1,1),(44,50,1,6),(45,50,2,2),(46,51,3,3),(47,52,1,1),(48,53,1,1),(49,54,1,1),(50,55,1,3),(51,55,3,3),(52,56,1,1),(53,57,1,1);
 /*!40000 ALTER TABLE `entregas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,8 +243,8 @@ DROP TABLE IF EXISTS `funcionarios`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `funcionarios` (
   `id_colegio` tinyint(2) NOT NULL,
-  `Nombre` varchar(20) NOT NULL,
-  `ApellidoPat` varchar(15) NOT NULL,
+  `Nombre` text NOT NULL,
+  `ApellidoPat` text NOT NULL,
   `RFC` varchar(13) NOT NULL,
   PRIMARY KEY (`RFC`),
   KEY `id_colegio` (`id_colegio`),
@@ -257,7 +258,6 @@ CREATE TABLE `funcionarios` (
 
 LOCK TABLES `funcionarios` WRITE;
 /*!40000 ALTER TABLE `funcionarios` DISABLE KEYS */;
-INSERT INTO `funcionarios` VALUES (1,'Lenin','Pavón','AAAA9007151H0');
 /*!40000 ALTER TABLE `funcionarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -302,7 +302,7 @@ CREATE TABLE `lista_negra` (
   KEY `id_cancelacion` (`id_cancelacion`),
   CONSTRAINT `lista_negra_ibfk_1` FOREIGN KEY (`id_cancelacion`) REFERENCES `cancelaciones` (`id_cancelacion`),
   CONSTRAINT `lista_negra_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -311,7 +311,6 @@ CREATE TABLE `lista_negra` (
 
 LOCK TABLES `lista_negra` WRITE;
 /*!40000 ALTER TABLE `lista_negra` DISABLE KEYS */;
-INSERT INTO `lista_negra` VALUES (1,'A319014217',11,'2020-06-03 18:40:08'),(2,'A319014217',12,'2020-06-03 18:44:29'),(3,'A319014217',12,'2020-06-03 18:44:29'),(4,'A319014217',12,'2020-06-03 18:44:29'),(5,'A319014217',12,'2020-06-03 18:44:29'),(6,'A319014217',13,'2020-06-03 18:47:13'),(7,'A319014217',14,'2020-06-03 18:47:51'),(8,'A319014217',15,'2020-06-03 18:56:12'),(9,'A319014217',16,'2020-06-03 19:06:56');
 /*!40000 ALTER TABLE `lista_negra` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -348,11 +347,13 @@ DROP TABLE IF EXISTS `mensajeros`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `mensajeros` (
   `id_mensajero` tinyint(3) NOT NULL AUTO_INCREMENT,
-  `Nombre` varchar(20) NOT NULL,
+  `Nombre` text NOT NULL,
   `Password` text NOT NULL,
   `estado` tinyint(1) DEFAULT '0',
+  `nIdentificador` varchar(5) NOT NULL,
+  `condimento` varchar(15) NOT NULL,
   PRIMARY KEY (`id_mensajero`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -361,7 +362,7 @@ CREATE TABLE `mensajeros` (
 
 LOCK TABLES `mensajeros` WRITE;
 /*!40000 ALTER TABLE `mensajeros` DISABLE KEYS */;
-INSERT INTO `mensajeros` VALUES (1,'Juan','Juan',1),(2,'Alejandro','Alejandro',1);
+INSERT INTO `mensajeros` VALUES (1,'Juan','Juan',1,'',''),(2,'Alejandro','Alejandro',1,'',''),(4,'mk/9w0k4lWCYLgwvii0I67237vUIybk84Q==','b8jJusnuIpXDtx4YP+2LYnfy32/quAIZMaWYb0n8rhwp8GQ41/MVe7NF0kc7R8zemvt5OUSCiahQXFwo8m62XqDk4qoavVv+F+TMzaMWaC8=',0,'M32','8%95g/5u=xSxW3R');
 /*!40000 ALTER TABLE `mensajeros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -379,7 +380,7 @@ CREATE TABLE `menu` (
   PRIMARY KEY (`id_menu`),
   KEY `alimento` (`id_alimento`),
   CONSTRAINT `alimento` FOREIGN KEY (`id_alimento`) REFERENCES `alimentos` (`id_alimento`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -388,7 +389,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,1,82),(2,2,89),(3,3,6),(4,4,59);
+INSERT INTO `menu` VALUES (1,1,37),(2,2,49),(3,3,45),(4,4,50);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -416,7 +417,7 @@ CREATE TABLE `pedidos` (
   CONSTRAINT `pedidos_ibfk_3` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`),
   CONSTRAINT `pedidos_ibfk_4` FOREIGN KEY (`lugar`) REFERENCES `lugares` (`id_lugar`),
   CONSTRAINT `pedidos_ibfk_5` FOREIGN KEY (`id_asignacion`) REFERENCES `asignaciones` (`id_asignacion`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -425,7 +426,7 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (48,'A319014217',103,27.00,'2020-05-29 23:56:12',1,3),(49,'A319014217',104,13.50,'2020-05-29 18:29:48',1,1),(50,'A319014217',105,133.50,'2020-05-30 00:02:34',1,2),(51,'A319014217',106,36.00,'2020-05-30 00:02:52',1,1),(52,'A319014217',107,13.50,'2020-05-30 00:06:47',1,2),(53,'A319014217',108,13.50,'2020-05-30 00:06:03',1,1),(54,'A319014217',109,13.50,'2020-05-30 00:06:56',1,3);
+INSERT INTO `pedidos` VALUES (48,'A319014217',103,27.00,'2020-05-29 23:56:12',1,3),(49,'A319014217',104,13.50,'2020-05-30 21:12:03',1,2),(50,'A319014217',105,133.50,'2020-05-30 00:02:34',1,2),(51,'A319014217',106,36.00,'2020-05-30 21:12:11',1,3),(52,'A319014217',107,13.50,'2020-05-30 00:06:47',1,2),(53,'A319014217',108,13.50,'2020-05-30 21:12:50',1,2),(54,'A319014217',109,13.50,'2020-05-30 00:06:56',1,3),(55,'A319014217',110,64.50,'2020-05-30 21:13:49',1,3),(56,'A319014217',111,13.50,'2020-05-30 21:14:33',1,1),(57,'A319014217',112,13.50,'2020-05-30 21:14:49',1,2);
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,8 +440,8 @@ DROP TABLE IF EXISTS `profesores`;
 CREATE TABLE `profesores` (
   `RFC` varchar(13) NOT NULL,
   `id_colegio` tinyint(2) NOT NULL,
-  `Nombre` varchar(20) NOT NULL,
-  `ApellidoPat` varchar(15) NOT NULL,
+  `Nombre` text NOT NULL,
+  `ApellidoPat` text NOT NULL,
   PRIMARY KEY (`RFC`),
   KEY `id_colegio` (`id_colegio`),
   CONSTRAINT `profesores_ibfk_1` FOREIGN KEY (`id_colegio`) REFERENCES `colegios` (`id_colegio`)
@@ -453,7 +454,6 @@ CREATE TABLE `profesores` (
 
 LOCK TABLES `profesores` WRITE;
 /*!40000 ALTER TABLE `profesores` DISABLE KEYS */;
-INSERT INTO `profesores` VALUES ('BBBB9007151H0',1,'Lenin','Pavón');
 /*!40000 ALTER TABLE `profesores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -490,8 +490,8 @@ DROP TABLE IF EXISTS `trabajadores`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `trabajadores` (
   `NTrabajador` varchar(10) NOT NULL,
-  `Nombre` varchar(20) NOT NULL,
-  `ApellidoPat` varchar(15) NOT NULL,
+  `Nombre` text NOT NULL,
+  `ApellidoPat` text NOT NULL,
   PRIMARY KEY (`NTrabajador`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -502,7 +502,6 @@ CREATE TABLE `trabajadores` (
 
 LOCK TABLES `trabajadores` WRITE;
 /*!40000 ALTER TABLE `trabajadores` DISABLE KEYS */;
-INSERT INTO `trabajadores` VALUES ('123456789','Lenin','Pavón'),('516689000','Augusto','Augusto');
 /*!40000 ALTER TABLE `trabajadores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -527,7 +526,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES ('A123456777','8DaOT/lgWalFMz6cTKuprQ==','01HqHjY0yG$y4Eg'),('A123456788','KGxRYSpxAg6zJfEpARJaRw==','C6pAzV%f(m(nihv'),('A123456789','xhi18grGGRhgwCCfbASCUA==','Hg/vMW1W?rK3l7#'),('A319014216','10beTOaYhXKf0ZYn+AD95g==','1OM7kHx6cTk$n9r'),('A319014217','tffN5+srALU1k9OcQicpJ8rEVnLfYL1nkq0TT0Rwv+pNXeokEBO7M9+t7ixEqbuxN46R27SQYyvDZO+JqKofB+45/k5hKPn5v4Ze6i0atHA=','Jzxwr4lWIN2QCeO'),('FAAAA9007151H0','GE86Grx24vt55x0/DD42Ug==','QzzpBL!yz?4gdCh'),('PBBBB9007151H0','wZ5ybYZjYj/feVI+EOthZQ==','%dZNSDvWXDQ)$C%'),('root','root','a'),('T123456789','09/hBB9/lUyFuf3N+1KIpg==','w4ek&Wt4FAfyEIA'),('T516689000','A0uzS8Ex9lRwW349GAwPLg==','qd7gbNhnbOS&/A9'),('uwu','uwu','uwu');
+INSERT INTO `usuarios` VALUES ('A123456777','8DaOT/lgWalFMz6cTKuprQ==','01HqHjY0yG$y4Eg'),('A319014215','uxiqihFpJ1o66sUk17aRcmmxB0FaN2mH2y+5kamWPiPZTOTooRZ8oufdImsTPCVH3c8vsTCvcXmynBlqOIhS7gnIj079hVYid7zamDyrJw0=','!8r6ffZ)3?iiSPh'),('A319014216','10beTOaYhXKf0ZYn+AD95g==','1OM7kHx6cTk$n9r'),('A319014217','tffN5+srALU1k9OcQicpJ8rEVnLfYL1nkq0TT0Rwv+pNXeokEBO7M9+t7ixEqbuxN46R27SQYyvDZO+JqKofB+45/k5hKPn5v4Ze6i0atHA=','Jzxwr4lWIN2QCeO'),('FAAAA9007151H0','GE86Grx24vt55x0/DD42Ug==','QzzpBL!yz?4gdCh'),('FEEEE9007151H0','10cnKkLpIwXUBPtPCLUBk7GtpB2U5dmg+VKChs2LL3+18Vn4RrzwK3cfksyjk0/gOJeDwVDQ3wUHtwTGh+K3oeP42IqvjwkVuZdS0JW8gMc=','cwx/ltIiySaha2%'),('FFFFF8305281H0','MsAF+EW6KKYkVEe6rZURuQG89fYZS+1HlMtDqHVVy+WrN3sDkmmBszBenMwLIIIW4HunrgEgyVJWqPG6w1cwXH4ITfA4pW2nEdPhBNyiYwM=','=L(PvaDA?j)I96D'),('FFFFF9007151H0','3rRbzkja4GTvrbHj80rGkZ+ib0bX7vS0ZLdtE+dlPrhsUs9BeAGxkze5HsacIVXhpoxT4233Os2X3ZRwg0UD4IbUOqy4zp6GJ93m+gTKFS8=','9&TW)YMqmNPELra'),('PBBBB9007151H0','wZ5ybYZjYj/feVI+EOthZQ==','%dZNSDvWXDQ)$C%'),('PCCCC9007151H0','pAdyp0ELU4KswEwEVaGEGWGxLHgyzG13G6mp4Ml7anNvvsTUduAikPJFRoOReeYurM0uCgCCYvXMiL4dOyYUvdCeZbngf61NJHPC9z0qlmE=','nA04RGIRlRbuIi0'),('PDDDD9007151H0','gy11q5LtY9y9eGzs42VNoST55FlbBqueSlisfu6DR2diy75J83ArFOLaXOeJmJUmi90PM5IFCdeT274/JBt6QST2VZs4ZafUmY1DqLsnfFo=','NlSEElPvsFS)XU6'),('PHHHH9007151H0','Dejng7zMDyVgpOAVd8ENBixb/bVPNIEQnYD+tq1Qrwaka6MlSp3cf2IrA5O4tnfnwvmbUvWxzdW3GMAchiChUOh12jL3DCk50T4Qrz7DRs0=','y/#449xMMM%4hCl'),('root','root','a'),('T123456789','09/hBB9/lUyFuf3N+1KIpg==','w4ek&Wt4FAfyEIA'),('T319014215','PJlqOLbHjIzcuTg5Nsg1JynYqAF7r5zCYc95iwNPQu/gnpYJYYu8eYfdfcGcyR65qR+weXQ2OcZXIQPIuWjlhWsHCImLJ1l60caFYfqyO/8=','Ls(K4hIIUnn2Cdt'),('T319014217','JVViCFwbm8rkEJdDrlpaMFT7SQ+iPPJZsC33ZK3PXPYsDvSootDgtygET7UhnCQNoCX4YiB9mebY4/vQGbv+yjGFRoAt7EWsnZtYB3pY6J4=','k1BOOrGhvV)1t%2'),('T516689000','A0uzS8Ex9lRwW349GAwPLg==','qd7gbNhnbOS&/A9'),('uwu','uwu','uwu');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -540,4 +539,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-29 19:49:48
+-- Dump completed on 2020-05-30 22:45:00

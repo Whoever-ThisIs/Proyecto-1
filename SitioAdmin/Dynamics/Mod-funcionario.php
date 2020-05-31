@@ -1,7 +1,8 @@
 <?php
+  include("../../SitioUsr/Dynamics/des-cifrado.php");
   if (isset($_POST['nombre']) && isset($_POST['paterno']) && isset($_POST['colegio']) && isset($_POST['RFC']) && isset($_POST['id'])) {
-    $nombre = $_POST['nombre'];
-    $paterno = $_POST['paterno'];
+    $nombre = cifrar($_POST['nombre']);
+    $paterno = cifrar($_POST['Paterno']);
     $colegio = $_POST['colegio'];
     $RFC = $_POST['RFC'];
     $id = $_POST['id'];

@@ -1,4 +1,5 @@
 <?php
+  include("../../SitioUsr/Dynamics/des-cifrado.php");
   if (isset($_POST['id']))
   {
     $id = $_POST['id'];
@@ -21,9 +22,9 @@
                     <form method='POST' action='Mod-funcionario.php'>
                       <input type='hidden' name='id' value='" . $funcionario['RFC'] . "'>
                       <p>Nombre</p>
-                      <input type='text' name='nombre' value='" . $funcionario['Nombre'] . "' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' required>
+                      <input type='text' name='nombre' value='" . descifrar($funcionario['Nombre']) . "' pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' required>
                       <p> Apelido Paterno </p>
-                      <input type='text' name='paterno' value='" . $funcionario['ApellidoPat'] . "' required pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas'>
+                      <input type='text' name='paterno' value='" . descifrar($funcionario['ApellidoPat']) . "' required pattern='^[A-ZÁÉÍÓÚÜÑ][a-záéíóüúñ]+($|\s?[A-ZÁÉÍÓÚÜÑ]+[a-záéíóüúñ]+$)' title='Recuerda como se usan las mayusculas'>
                       <p> Colegio </p>
                       <select name='colegio'>
                         <option value='" . $funcionario['id_colegio'] . "'>" . $funcionario['Colegio'] . " </option>";
