@@ -122,3 +122,5 @@
 -Nuestro compañero Abraham tenía unas cosas que nunca pudo subir, ya que se atraso y el sistema no le permitía subir cosas porque tenía que actualizar en varias ocaciones.
 -Nuestra compañera Silvia tuvo varios problemas al interactuar con la base de datos y con la carpeta Dynamics, ya que tenía un error extraño que decía que el acceso estaba denegado.
 -Cuando creíamos que por fin ya íbamos a terminar el proyecto, nos dimos cuenta de que nos equivocamos, y no era cifrar($nombre), sino que era cifrar($id). Intentamos cambiarlo, pero al intentarlo, el proyecto dejaba de funcionar, y decidimos dejarlo así, ya que preferimos que funcionara a que dejara de funcionar.:cry:
+**NOTA:**
+-El diagrama y el diccionario de datos se encuentran en la rama Silvia.
