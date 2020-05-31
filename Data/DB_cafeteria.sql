@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `administradores`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `administradores` (
-  `id_admin` varchar(5) NOT NULL,
+  `id_admin` text NOT NULL,
   `Password` text NOT NULL,
   `nombre` text NOT NULL,
   `condimento` text NOT NULL,
@@ -118,7 +118,6 @@ CREATE TABLE `asignaciones` (
 
 LOCK TABLES `asignaciones` WRITE;
 /*!40000 ALTER TABLE `asignaciones` DISABLE KEYS */;
-INSERT INTO `asignaciones` VALUES (103,1,48),(104,2,49),(105,1,50),(106,2,51),(107,1,52),(108,2,53),(109,1,54),(110,2,55),(111,1,56),(112,2,57);
 /*!40000 ALTER TABLE `asignaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +131,7 @@ DROP TABLE IF EXISTS `cancelaciones`;
 CREATE TABLE `cancelaciones` (
   `id_cancelacion` int(11) NOT NULL AUTO_INCREMENT,
   `id_pedido` int(11) NOT NULL,
-  `id_usuario` varchar(14) NOT NULL,
+  `id_usuario` text NOT NULL,
   `id_razon` tinyint(3) NOT NULL,
   `comentario` text,
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -152,7 +151,6 @@ CREATE TABLE `cancelaciones` (
 
 LOCK TABLES `cancelaciones` WRITE;
 /*!40000 ALTER TABLE `cancelaciones` DISABLE KEYS */;
-INSERT INTO `cancelaciones` VALUES (2,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:20:46'),(3,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:21:47'),(4,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:21:58'),(5,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:22:48'),(6,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:28:14'),(7,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:32:14'),(8,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:34:07'),(9,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:34:51'),(10,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:37:30'),(11,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:40:08'),(12,48,'A319014217',1,'Fue mui grosero','2020-05-29 23:44:29'),(13,48,'A319014217',1,NULL,'2020-05-29 23:47:13'),(14,48,'A319014217',1,NULL,'2020-05-29 23:47:51'),(15,48,'A319014217',1,NULL,'2020-05-29 23:56:12'),(16,54,'A319014217',1,NULL,'2020-05-30 00:06:56'),(17,51,'A319014217',2,NULL,'2020-05-30 21:12:11'),(18,55,'A319014217',1,NULL,'2020-05-30 21:13:49');
 /*!40000 ALTER TABLE `cancelaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -206,7 +204,6 @@ CREATE TABLE `entregas` (
 
 LOCK TABLES `entregas` WRITE;
 /*!40000 ALTER TABLE `entregas` DISABLE KEYS */;
-INSERT INTO `entregas` VALUES (42,48,1,2),(43,49,1,1),(44,50,1,6),(45,50,2,2),(46,51,3,3),(47,52,1,1),(48,53,1,1),(49,54,1,1),(50,55,1,3),(51,55,3,3),(52,56,1,1),(53,57,1,1);
 /*!40000 ALTER TABLE `entregas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,7 +291,7 @@ DROP TABLE IF EXISTS `lista_negra`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lista_negra` (
   `id_lista_negra` int(11) NOT NULL AUTO_INCREMENT,
-  `id_usuario` varchar(14) NOT NULL,
+  `id_usuario` text NOT NULL,
   `id_cancelacion` int(11) NOT NULL,
   `fecha_final` datetime DEFAULT NULL,
   PRIMARY KEY (`id_lista_negra`),
@@ -350,7 +347,7 @@ CREATE TABLE `mensajeros` (
   `Nombre` text NOT NULL,
   `Password` text NOT NULL,
   `estado` tinyint(1) DEFAULT '0',
-  `nIdentificador` varchar(5) NOT NULL,
+  `nIdentificador` text NOT NULL,
   `condimento` varchar(15) NOT NULL,
   PRIMARY KEY (`id_mensajero`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
@@ -362,7 +359,6 @@ CREATE TABLE `mensajeros` (
 
 LOCK TABLES `mensajeros` WRITE;
 /*!40000 ALTER TABLE `mensajeros` DISABLE KEYS */;
-INSERT INTO `mensajeros` VALUES (1,'Juan','Juan',1,'',''),(2,'Alejandro','Alejandro',1,'',''),(4,'mk/9w0k4lWCYLgwvii0I67237vUIybk84Q==','b8jJusnuIpXDtx4YP+2LYnfy32/quAIZMaWYb0n8rhwp8GQ41/MVe7NF0kc7R8zemvt5OUSCiahQXFwo8m62XqDk4qoavVv+F+TMzaMWaC8=',0,'M32','8%95g/5u=xSxW3R');
 /*!40000 ALTER TABLE `mensajeros` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -389,7 +385,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,1,37),(2,2,49),(3,3,45),(4,4,50);
+INSERT INTO `menu` VALUES (1,1,50),(2,2,50),(3,3,50),(4,4,50);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -402,7 +398,7 @@ DROP TABLE IF EXISTS `pedidos`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `pedidos` (
   `id_pedido` int(11) NOT NULL AUTO_INCREMENT,
-  `id_usuario` varchar(14) NOT NULL,
+  `id_usuario` text NOT NULL,
   `id_asignacion` int(11) NOT NULL,
   `Costo` float(6,2) NOT NULL,
   `Fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -426,7 +422,6 @@ CREATE TABLE `pedidos` (
 
 LOCK TABLES `pedidos` WRITE;
 /*!40000 ALTER TABLE `pedidos` DISABLE KEYS */;
-INSERT INTO `pedidos` VALUES (48,'A319014217',103,27.00,'2020-05-29 23:56:12',1,3),(49,'A319014217',104,13.50,'2020-05-30 21:12:03',1,2),(50,'A319014217',105,133.50,'2020-05-30 00:02:34',1,2),(51,'A319014217',106,36.00,'2020-05-30 21:12:11',1,3),(52,'A319014217',107,13.50,'2020-05-30 00:06:47',1,2),(53,'A319014217',108,13.50,'2020-05-30 21:12:50',1,2),(54,'A319014217',109,13.50,'2020-05-30 00:06:56',1,3),(55,'A319014217',110,64.50,'2020-05-30 21:13:49',1,3),(56,'A319014217',111,13.50,'2020-05-30 21:14:33',1,1),(57,'A319014217',112,13.50,'2020-05-30 21:14:49',1,2);
 /*!40000 ALTER TABLE `pedidos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -513,7 +508,7 @@ DROP TABLE IF EXISTS `usuarios`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `usuarios` (
-  `id_usuario` varchar(14) NOT NULL,
+  `id_usuario` text NOT NULL,
   `password` text NOT NULL,
   `condimento` text NOT NULL,
   PRIMARY KEY (`id_usuario`)
@@ -526,7 +521,6 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES ('A123456777','8DaOT/lgWalFMz6cTKuprQ==','01HqHjY0yG$y4Eg'),('A319014215','uxiqihFpJ1o66sUk17aRcmmxB0FaN2mH2y+5kamWPiPZTOTooRZ8oufdImsTPCVH3c8vsTCvcXmynBlqOIhS7gnIj079hVYid7zamDyrJw0=','!8r6ffZ)3?iiSPh'),('A319014216','10beTOaYhXKf0ZYn+AD95g==','1OM7kHx6cTk$n9r'),('A319014217','tffN5+srALU1k9OcQicpJ8rEVnLfYL1nkq0TT0Rwv+pNXeokEBO7M9+t7ixEqbuxN46R27SQYyvDZO+JqKofB+45/k5hKPn5v4Ze6i0atHA=','Jzxwr4lWIN2QCeO'),('FAAAA9007151H0','GE86Grx24vt55x0/DD42Ug==','QzzpBL!yz?4gdCh'),('FEEEE9007151H0','10cnKkLpIwXUBPtPCLUBk7GtpB2U5dmg+VKChs2LL3+18Vn4RrzwK3cfksyjk0/gOJeDwVDQ3wUHtwTGh+K3oeP42IqvjwkVuZdS0JW8gMc=','cwx/ltIiySaha2%'),('FFFFF8305281H0','MsAF+EW6KKYkVEe6rZURuQG89fYZS+1HlMtDqHVVy+WrN3sDkmmBszBenMwLIIIW4HunrgEgyVJWqPG6w1cwXH4ITfA4pW2nEdPhBNyiYwM=','=L(PvaDA?j)I96D'),('FFFFF9007151H0','3rRbzkja4GTvrbHj80rGkZ+ib0bX7vS0ZLdtE+dlPrhsUs9BeAGxkze5HsacIVXhpoxT4233Os2X3ZRwg0UD4IbUOqy4zp6GJ93m+gTKFS8=','9&TW)YMqmNPELra'),('PBBBB9007151H0','wZ5ybYZjYj/feVI+EOthZQ==','%dZNSDvWXDQ)$C%'),('PCCCC9007151H0','pAdyp0ELU4KswEwEVaGEGWGxLHgyzG13G6mp4Ml7anNvvsTUduAikPJFRoOReeYurM0uCgCCYvXMiL4dOyYUvdCeZbngf61NJHPC9z0qlmE=','nA04RGIRlRbuIi0'),('PDDDD9007151H0','gy11q5LtY9y9eGzs42VNoST55FlbBqueSlisfu6DR2diy75J83ArFOLaXOeJmJUmi90PM5IFCdeT274/JBt6QST2VZs4ZafUmY1DqLsnfFo=','NlSEElPvsFS)XU6'),('PHHHH9007151H0','Dejng7zMDyVgpOAVd8ENBixb/bVPNIEQnYD+tq1Qrwaka6MlSp3cf2IrA5O4tnfnwvmbUvWxzdW3GMAchiChUOh12jL3DCk50T4Qrz7DRs0=','y/#449xMMM%4hCl'),('root','root','a'),('T123456789','09/hBB9/lUyFuf3N+1KIpg==','w4ek&Wt4FAfyEIA'),('T319014215','PJlqOLbHjIzcuTg5Nsg1JynYqAF7r5zCYc95iwNPQu/gnpYJYYu8eYfdfcGcyR65qR+weXQ2OcZXIQPIuWjlhWsHCImLJ1l60caFYfqyO/8=','Ls(K4hIIUnn2Cdt'),('T319014217','JVViCFwbm8rkEJdDrlpaMFT7SQ+iPPJZsC33ZK3PXPYsDvSootDgtygET7UhnCQNoCX4YiB9mebY4/vQGbv+yjGFRoAt7EWsnZtYB3pY6J4=','k1BOOrGhvV)1t%2'),('T516689000','A0uzS8Ex9lRwW349GAwPLg==','qd7gbNhnbOS&/A9'),('uwu','uwu','uwu');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
