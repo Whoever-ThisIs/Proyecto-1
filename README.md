@@ -112,3 +112,6 @@
 ## COMENTARIOS ADICIONALES:
 **Dificultades en dispositivos MAC:**
 -Debido a las diferencias entre la instalacion, al momento de cifrar los datos o de generar las contraseñas, puede que no se genere una codificación base64 suficientemente larga como para que pueda ser detectada al momento de descifrarse.
+**Trabajo en equipo:**
+-Afortunadamente nuestro equipo siempre logro mantener una buena comunicación entre todos los integrantes, lo cual fue esencial para que todos los integrantes pudieramos comprender el funcionamiente de este programa.
+-Nuestro compañero Abraham siempre tenía los programas actualizados y ayudaba a todos los demás a entender lo que sucedía con su programa, permitiendo un avance rápido y eficaz al equipo.
